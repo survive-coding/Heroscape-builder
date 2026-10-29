@@ -84,6 +84,15 @@ const budgetBar = () => {
     el('span', {}, `${S.ids.length} tarjetas, ${spent()} puntos gastados`), S.done && el('b', {}, '✓ Confirmado'));
 };
 
+// Prueba las extensiones en orden y usa la primera imagen que exista
+const EXT = ['webp', 'jpg', 'jpeg', 'png'];
+function unitImg(u) {
+  const img = el('img', { alt:u.Name, loading:'lazy' }); let n = 0;
+  img.onerror = () => { if (++n < EXT.length) img.src = `images/${u.ID}.${EXT[n]}`; else img.style.visibility = 'hidden'; };
+  img.src = `images/${u.ID}.${EXT[0]}`;
+  return img;
+}
+
 function card(u, o = {}) {
   const f = C.factions[u.Faction] || { c:['#444','#222'] };
   return el('article', { class:'card', style:`--a:${f.c[0]};--b:${f.c[1]}` },
@@ -91,7 +100,7 @@ function card(u, o = {}) {
     el('p', { class:'meta' }, `${u['Unit Type']}, ${u.Species}, ${u.Size} ${u.Height}`),
     el('div', { class:'body' },
       el('div', { class:'pic' + (o.lock ? ' locked' : '') },
-        el('img', { src:`images/${u.ID}.jpg`, alt:u.Name, loading:'lazy', onerror:e => e.target.style.visibility = 'hidden' }),
+        unitImg(u),
         o.lock && el('b', { class:'who' }, o.lock)),
       el('ul', { class:'stats' }, STATS.map(([k, i]) => el('li', {}, i, el('span', {}, u[k]))))),
     el('footer', {},
