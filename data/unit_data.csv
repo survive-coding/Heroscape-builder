@@ -1,0 +1,102 @@
+ID,number,Name,Faction,Cost,Species,Rarity,Unit Type,Class,Personality,Size,Height,Life,Move,Range,Attack,Defense,Powers
+1,3,Orcos Bersek,Utgar,50,Orc,Unique,Squad,Warriors,Wild,Medium,5,1,5,1,4,2,"Sed de Sangre
+
+Una vez por turno, si un orco bersek derrota a una figura, otro orco bersek en su campo de visión podrá volver a moverse para atacar a una figura enemiga a su alcance.
+Si aún no se ha movido, o no hay enemigos a su alcance, la sed de sangre no se activa."
+2,1,"Kadne, la Renegada",Utgar,110,Kyrie,Unique,Hero,Warrior,Ferocious,Medium,5,5,6,1,3,3,"Aura de Terror
+
+Cualquier figura de una escuadra enemiga que tenga línea de visión con Kadne, lanzará un dado menos al defenderse (min.1)
+
+Odio Visceral
+
+Si Kadne hiere a una figura (excepto si ésta también es seguidora de Utgar), inflige un daño adicional
+
+Vuelo
+
+Esta figura ignora elevaciones, agua, ruinas y otras figuras al moverse. Si Kadne está trabada en combate al empezar a moverse, deberá destrabarse."
+3,1,Ent Común,Ullar,90,Tree,Unique,Hero,Guardian,Wise,Huge,8,5,5,1,3,4,"Pastor de Árboles
+
+Alcance 5. Ataque 3. Tras moverse y en lugar de atacar, puedes controlar un árbol a 5 espacios de distancia o menos del Ent, y usarlo para atacar a una figura enemiga adyacente a ese árbol. El árbol no puede moverse, no sufre contraataques y no traba a la figura enemiga en combate.
+
+Raíces Superficiales
+
+Cualquier figura enemiga que inicie su turno a 5 espacios o menos del Ent, verá su movimiento reducido a 3."
+4,3,Patrulla Nandoriana,Ullar,80,Elf,Unique,Squad,Soldiers,Valiant,Medium,5,1,5,1,3,3,"Bosque Protector
+
+Mientras una figura Nandoriana se encuentre en hierba, no podrá ser objetivo de ataques normales a distancia"
+5,3,Hermanas Everdeen,Einar,70,Human,Unique,Squad,Soldiers,Disciplined,Medium,5,1,5,6,2,2,"Camuflaje
+
+Si una Hermana es objetivo de un ataque a distancia, la figura atacante verá su alcance reducido a la mitad (redondeado hacia arriba)"
+6,1,Portal Pete,Einar,80,Human,Unique,Hero,Wizard,Valiant,Medium,5,5,5,1,2,3,"Teletransporte
+
+En lugar de moverse, Pete puede transportarse a cualquier baldosa libre en un radio de 10 espacios, ignorando elevaciones, obstáculos y otras figuras. Pete acabará su turno sin atacar.
+
+Vortex
+
+En lugar de atacar, tira el dado de 20 caras para usar “Teletransporte” en una figura adyacente (aliada o enemiga). 13 o más, coloca la figura en la baldosa libre de tu elección, en un radio de 10 espacios."
+7,1,Hogna,Vydar,90,Spider,Common,Hero,Predator,Tricky,Small,3,4,7,1,3,3,"Telaraña
+
+Cuando una figura enemiga no-voladora (pequeña o mediana) entre la zona a 3 espacios de distancia de Hogna, deberá terminar ahí su movimiento.
+
+Trepadora
+
+Esta figura ignora elevaciones y ruinas al moverse
+
+Mordisco Tóxico
+
+Si Hogna inflige una herida al atacar, esta causará un daño adicional"
+8,3,Zapadores Bufoides,Vydar,50,Frog,Common,Squad,Soldiers,Disciplined,Medium,5,1,5,1,2,4,"Atrincherado
+
+Si un Zapador es atacado mientras está en una baldosa de tierra o arena, se considerará atrincherado y lanzará dos dados más al defenderse.
+
+Anfibio
+
+Los Zapadores no detienen su movimiento al entrar en el agua."
+9,1,Jefe Banaru,Jandar,100,Human,Unique,Hero,General,Disciplined,Medium,5,4,5,1,2,3,"Código de Honor
+
+Las figuras enemigas que estén a 5 espacios o menos del Jefe Banaru, y tengan línea de visión con él, deberán utilizar sus valores originales de movimiento, alcance, ataque y defensa, ignorando cualquier incremento/reducción causado por habilidades, glifos o altura.
+
+Lealtad
+
+Si el Jefe es parte de un ejército formado íntegramente por seguidores de Jandar, el coste de esta carta se convierte en 0."
+10,1,"Quinar, la Protectora",Jandar,110,Kyrie,Unique,Hero,Warrior,Merciful,Medium,5,5,6,1,3,3,"Vuelo
+
+Esta figura ignora elevaciones, agua, ruinas y otras figuras al moverse. Si Quinar está trabada en combate al empezar a moverse, deberá destrabarse.
+
+Mártir de Guerra
+
+Cualquier figura aliada que reciba daño (excepto otras quirias) a 3 espacios de distancia o menos, podrá transferir éstos a Quiniar.
+
+Ángel Vengador
+
+Quiniar lanzará un dado adicional de ataque y defensa por cada 2 daños recibidos"
+11,1,Konane Kai,Valkrill,90,Cyborg,Unique,Hero,Soldier,Ferocious,Large,6,4,7,1,4,3,"Doble Impacto
+
+Cuando Konane ataca, puede atacar una vez adicional (esta habilidad no es utilizable si el primer ataque es una Embestida Ciega)
+
+Embestida Ciega
+
+Si Konane se ha movido al menos 3 espacios en linea recta justo antes de atacar, suma 2 dados a su ataque.
+
+Titanio Reforzado
+
+Los brazos de Konane no pueden utilizarse como objetivo para ataques a distancia"
+12,1,John Panzer,Valkrill,100,Human,Unique,Hero,General,Valiant,Medium,5,4,5,1,3,2,"Estampida
+
+Movimiento especial. John podrá atravesar figuras enemigas de tamaño igual o menor al moverse. Tira el dado de 20 caras por cada figura atravesada. 13 o más, esa figura recibe un daño. John no podrá atacar tras intentar una Estampida
+Las figuras adyacentes a John al comenzar una estampida podrán utilizar también esta habilidad hasta el final del turno.
+
+Lealtad
+
+Si John es parte de un ejército formado íntegramente por seguidores de Valkrill, el coste de esta carta se convierte en 0."
+13,3,Junk Cyborgs,Aquilla,50,Cyborg,Unique,Squad,Soldier,Wild,Medium,5,1,5,3,3,2,"Piezas de Repuesto
+
+Si el cyborg derrota a una figura enemiga, puede saquearla. Coloca la figura derrotada sobre esta carta. En adelante, suma un dado más a su ataque y defensa.
+Esta habilidad sólo puede activarse una vez."
+14,1,Wyvern Carmesí,Aquilla,120,Dragon,Unique,Hero,Beast,Ferocious,Medium,5,5,6,1,4,3,"Aliento Abrasador
+
+Alcance 3. Ataque 3. Selecciona una figura a atacar. Todas las figuras adyacentes a ésta también serán afectadas por el ataque. Tira los dados una vez, cada figura afectada debe defenderse individualmente. El Wyvern no es afectado por su propio ataque
+
+Vuelo
+
+Esta figura ignora elevaciones, agua, ruinas y otras figuras al moverse. Si el Wyvern está trabado en combate al empezar a moverse, deberá destrabarse"
