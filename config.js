@@ -3,7 +3,7 @@ window.CONFIG = {
   // URL de la aplicación web de Apps Script (termina en /exec). Los jugadores, contraseñas y presupuestos
   // se configuran en la hoja de Google (pestaña Players), no aquí.
   // Vacío = modo demo: todo se guarda solo en este navegador, con los jugadores de demoPlayers.
-  sheetsUrl: '',
+  sheetsUrl: 'https://script.google.com/macros/s/AKfycbwxjn61ZS6sb0ilpDBpk9DxduucS7OiUwzaNjxqX-gI0s5mjNO2Rt1Gdqn2ePuEVqeEcw/exec',
   demoPlayers: [
     { name: 'Jugador 1', password: '1111', budget: 1000 },
     { name: 'Jugador 2', password: '2222', budget: 1000 },
