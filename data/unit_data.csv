@@ -1,76 +1,100 @@
-ID,number,Name,Faction,Cost,Species,Rarity,Unit Type,Class,Personality,Size,Height,Life,Move,Range,Attack,Defense,Powers
-1,3,Orcos Bersek,Utgar,50,Orc,Unique,Squad,Warriors,Wild,Medium,5,1,5,1,4,2,"Sed de Sangre
+ID,Number,Name,Faction,Cost,Species,Rarity,Unit Type,Class,Personality,Size,Height,Life,Move,Range,Attack,Defense,Powers
+1,1,Agente Carr,Vydar,100,Human,Unique,Hero,Agent,Artero,Medium,5,4,5,6,2,4,"Paso Fantasma
 
-Una vez por turno, si un orco bersek derrota a una figura, otro orco bersek en su campo de visión podrá volver a moverse para atacar a una figura enemiga a su alcance.
-Si aún no se ha movido, o no hay enemigos a su alcance, la sed de sangre no se activa."
-2,1,"Kadne, la Renegada",Utgar,110,Kyrie,Unique,Hero,Warrior,Ferocious,Medium,5,5,6,1,3,3,"Aura de Terror
+El Agente Carr puede moverse a través de todas las figuras.
 
-Cualquier figura de una escuadra enemiga que tenga línea de visión con Kadne, lanzará un dado menos al defenderse (min.1)
+Espada del Juicio 4
 
-Odio Visceral
+Si el Agente Carr ataca a una figura adyacente, añade 4 dados a su ataque.
 
-Si Kadne hiere a una figura (excepto si ésta también es seguidora de Utgar), inflige un daño adicional
+Desengancharse
 
-Vuelo
+El Agente Carr nunca es atacado al abandonar un combate."
+2,4,Elite aero,Jandar,110,Human,Unique,Squad,Soldiers,Disciplinado,Medium,5,1,4,8,3,2,"Ataque Especial con Granada
 
-Esta figura ignora elevaciones, agua, ruinas y otras figuras al moverse. Si Kadne está trabada en combate al empezar a moverse, deberá destrabarse."
-3,1,Ent Común,Ullar,90,Tree,Unique,Hero,Guardian,Wise,Huge,8,5,5,1,3,4,"Pastor de Árboles
+Alcance 5. Lanzamiento 12. Ataque 2.
 
-Alcance 5. Ataque 3. Tras moverse y en lugar de atacar, puedes controlar un árbol a 5 espacios de distancia o menos del Ent, y usarlo para atacar a una figura enemiga adyacente a ese árbol. El árbol no puede moverse, no sufre contraataques y no traba a la figura enemiga en combate.
+Usa esta habilidad una vez por partida. Comienza la partida con un marcador de granada en esta carta. Retira el marcador para lanzar granadas. Con cada Élite Aerotransportada, realiza lo siguiente: Elige una figura para atacar. No se requiere línea de visión directa. Cualquier figura adyacente a la elegida también se ve afectada por el Ataque Especial con Granada. Lanza 2 dados de ataque una vez por todas las figuras afectadas. Cada figura lanza dados de defensa por separado.
 
-Raíces Superficiales
+El Despliegue
 
-Cualquier figura enemiga que inicie su turno a 5 espacios o menos del Ent, verá su movimiento reducido a 3."
-4,3,Patrulla Nandoriana,Ullar,80,Elf,Unique,Squad,Soldiers,Valiant,Medium,5,1,5,1,3,3,"Bosque Protector
+Los Élite Aerotransportados no comienzan la partida en el campo de batalla.
 
-Mientras una figura Nandoriana se encuentre en hierba, no podrá ser objetivo de ataques normales a distancia"
-5,3,Hermanas Everdeen,Einar,70,Human,Unique,Squad,Soldiers,Disciplined,Medium,5,1,5,6,2,2,"Camuflaje
+Al inicio de cada ronda, antes de colocar los Marcadores de Orden, lanza el dado de 20 caras. Si obtienes un 13 o más, puedes colocar las 4 figuras de Élite Aerotransportada en cualquier espacio vacío. No puedes colocarlas adyacentes entre sí ni a otras figuras, ni sobre glifos."
+3,1,Deathwalker 9000,Utgar,140,Soulborg,Unique,Hero,Deathwalker,Preciso,Large,7,1,5,7,4,9,"Ataque Especial Explosivo
 
-Si una Hermana es objetivo de un ataque a distancia, la figura atacante verá su alcance reducido a la mitad (redondeado hacia arriba)"
-6,1,Portal Pete,Einar,80,Human,Unique,Hero,Wizard,Valiant,Medium,5,5,5,1,2,3,"Teletransporte
+Alcance 7. Ataque 3.
 
-En lugar de moverse, Pete puede transportarse a cualquier baldosa libre en un radio de 10 espacios, ignorando elevaciones, obstáculos y otras figuras. Pete acabará su turno sin atacar.
+Elige una figura para atacar. Cualquier figura adyacente a la elegida también se ve afectada por el Ataque Especial Explosivo. El Caminante de la Muerte solo necesita tener línea de visión a la figura elegida. Lanza 3 dados de ataque una vez por todas las figuras afectadas. Cada figura lanza dados de defensa por separado. El Caminante de la Muerte puede verse afectado por su propio Ataque Especial Explosivo.
 
-Vortex
+Mejora de Alcance
 
-En lugar de atacar, tira el dado de 20 caras para usar “Teletransporte” en una figura adyacente (aliada o enemiga). 13 o más, coloca la figura en la baldosa libre de tu elección, en un radio de 10 espacios."
-7,1,Hogna,Vydar,90,Spider,Common,Hero,Predator,Tricky,Small,3,4,7,1,3,3,"Telaraña
+Cualquier Guardia Soulborg que controles con un Alcance de 4 o más y que esté adyacente al Caminante de la Muerte 9000, aumenta su Alcance en 2 espacios."
+4,1,Finn The Viking Champion,Jandar,80,Human,Unique,Hero,Champion,Valiente,Medium,5,4,5,1,3,4,"Aura de Ataque 1
 
-Cuando una figura enemiga no-voladora (pequeña o mediana) entre la zona a 3 espacios de distancia de Hogna, deberá terminar ahí su movimiento.
+Todas las figuras aliadas adyacentes a Finn con un Alcance de 1 suman 1 dado a su ataque normal.
 
-Trepadora
+Espíritu de Ataque del Guerrero 1
 
-Esta figura ignora elevaciones y ruinas al moverse
+Cuando Finn es destruido, coloca esta figura en cualquier Carta de Ejército única. El Espíritu de Finn suma 1 al ataque normal de esa carta."
+5,1,Grimnak,Utgar,120,Orc,Unique,Hero,Champion,Feroz,Huge,11,5,5,1,2,4,"Mordisco
 
-Mordisco Tóxico
+Antes de atacar, elige una figura mediana o pequeña adyacente a Grimnak. Si la figura elegida es de Escuadrón, destrúyela.
+Si la figura elegida es de Héroe, tira el dado de 20 caras. Si obtienes un 16 o más, destruye al Héroe elegido.
 
-Si Hogna inflige una herida al atacar, esta causará un daño adicional"
-8,3,Zapadores Bufoides,Vydar,50,Frog,Common,Squad,Soldiers,Disciplined,Medium,5,1,5,1,2,4,"Atrincherado
+Mejora del Guerrero Orco
 
-Si un Zapador es atacado mientras está en una baldosa de tierra o arena, se considerará atrincherado y lanzará dos dados más al defenderse.
+Todos los Guerreros Orcos aliados adyacentes a Grimnak tiran un dado de ataque adicional y un dado de defensa adicional."
+6,3,Izumi Samurai,Einar,70,Human,Unique,Squad,Samurai,Disciplinado,Medium,5,1,6,1,2,5,"Counter Strike
 
-Anfibio
+Al lanzar dados de defensa contra un ataque normal de una figura atacante adyacente, todos los escudos sobrantes cuentan como impactos imparables en la figura atacante. Esta habilidad no funciona contra otros samuráis."
+7,3,Krav Maga Agents,Vydar,90,Human,Unique,Squad,Agents,Artero,Medium,4,1,6,7,3,3,"Esquiva sigilosa
 
-Los Zapadores no detienen su movimiento al entrar en el agua."
-9,1,Jefe Banaru,Jandar,100,Human,Unique,Hero,General,Disciplined,Medium,5,4,5,1,2,3,"Código de Honor
+Cuando un agente de Krav Maga lanza dados de defensa contra una figura atacante que no está adyacente, un escudo bloqueará todo el daño."
+8,4,Marro Warriors,Utgar,80,Marro,Unique,Squad,Warriors,Salvaje,Medium,4,1,6,6,2,3,"Clon de Agua
 
-Las figuras enemigas que estén a 5 espacios o menos del Jefe Banaru, y tengan línea de visión con él, deberán utilizar sus valores originales de movimiento, alcance, ataque y defensa, ignorando cualquier incremento/reducción causado por habilidades, glifos o altura.
+En lugar de atacar con todos los Guerreros Marro, uno por uno, lanza el dado de 20 caras por cada Guerrero Marro en juego. Si obtienes un 15 o más, coloca un Guerrero Marro previamente destruido en un espacio del mismo nivel adyacente a ese Guerrero Marro. Cualquier Guerrero Marro en un espacio de agua necesita un 10 o más para clonar. Solo puedes clonar después de moverte y solo si ninguno de los Guerreros Marro atacó en este turno."
+9,1,Mimring,Utgar,150,Dragon,Unique,Hero,Beast,Feroz,Huge,9,5,6,1,4,3,"Ataque Especial Línea de Fuego
+Ataque Especial de Alcance 4.
 
-Lealtad
+Elige 8 casillas en línea recta desde Mimring. Todas las figuras en esas casillas que estén a la vista se ven afectadas por el Ataque Especial Línea de Fuego de Mimring. Lanza 4 dados de ataque una vez por todas las figuras afectadas. Las figuras afectadas lanzan dados de defensa por separado.
 
-Si el Jefe es parte de un ejército formado íntegramente por seguidores de Jandar, el coste de esta carta se convierte en 0."
-10,1,"Quinar, la Protectora",Jandar,110,Kyrie,Unique,Hero,Warrior,Merciful,Medium,5,5,6,1,3,3,"Vuelo
+Volador"
+10,1,Ne-Gok-Sa,Utgar,90,Marro,Unique,Hero,Warlord,Artero,Medium,5,5,5,1,3,6,"Control Mental 20
 
-Esta figura ignora elevaciones, agua, ruinas y otras figuras al moverse. Si Quinar está trabada en combate al empezar a moverse, deberá destrabarse.
+Tras moverte y antes de atacar, puedes elegir cualquier figura única adyacente a Ne-Gok-Sa. Tira el dado de 20 caras. Si sacas un 20, toma el control de la figura elegida y de su Carta de Ejército.
+Ahora controlas esa Carta de Ejército y todas las figuras que contiene. Retira cualquier Marcador de Orden de esta carta. Si Ne-Gok-Sa es destruido, conservas el control de cualquier Carta de Ejército previamente controlada mentalmente."
+11,1,Raelin The Kyrie Warrior,Jandar,100,Kyrie,Unique,Hero,Warrior,Piadoso,Medium,5,5,6,1,3,3,"Aura defensiva
 
-Mártir de Guerra
+Todas las figuras que controlas dentro de un radio de 4 espacios de visión libre de Raelin suman 2 a sus dados de defensa. El aura defensiva de Raelin no la afecta.
 
-Cualquier figura aliada que reciba daño (excepto otras quirias) a 3 espacios de distancia o menos, podrá transferir éstos a Quiniar.
+Volar
 
-Ángel Vengador
+Esta figura ignora elevaciones, agua, ruinas y otras figuras al moverse. Si un guardián está trabado en combate al empezar a moverse, deberá destrabarse."
+12,1,Sgt. Drake Alexander,Jandar,110,Human,Unique,Hero,Soldier,Valiente,Medium,5,5,5,1,6,3,"Velocidad Thoriana
 
-Quiniar lanzará un dado adicional de ataque y defensa por cada 2 daños recibidos"
-11,1,Konane Kai,Valkrill,90,Cyborg,Unique,Hero,Soldier,Ferocious,Large,6,4,7,1,4,3,"Doble Impacto
+Las figuras de los oponentes deben estar adyacentes al Sargento Drake Alexander para atacarlo con un ataque normal.
+
+Gancho 25
+
+En lugar de su movimiento normal, el Sargento Drake Alexander solo puede moverse una casilla. Esta casilla puede estar hasta 25 niveles por encima. Al usar el Gancho, se aplican todas las reglas de combate."
+13,1,Syvarris,Ullar,100,Elf,Unique,Hero,Archer,Preciso,Medium,5,4,5,9,3,2,"Doble Ataque
+
+Cuando Syvarris ataca, puede atacar una vez más."
+14,4,Tarn Viking Warriors,Jandar,70,Human,Unique,Squad,Warriors,Salvaje,Medium,5,1,4,1,3,4,"Carga Berserker
+
+Tras moverte y antes de atacar, tira el dado de 20 caras. Si obtienes un 15 o más, puedes mover de nuevo a todos los Guerreros Vikingos de Tarn."
+15,1,Thorgrim The Viking Champion,Jandar,80,Human,Unique,Hero,Champion,Valiente,Medium,5,4,5,1,3,4,"Aura defensiva 1
+
+Todas las figuras aliadas adyacentes a Thorgrim suman 1 dado a su defensa.
+
+Espíritu de la armadura del guerrero 1
+
+Cuando Thorgrim es destruido, coloca esta figura sobre cualquier carta de ejército única. El espíritu de Thorgrim suma 1 al valor de defensa de esa carta."
+16,2,Zettian Guards,Utgar,90,Soulborg,Unique,Squad,Guards,Preciso,Medium,5,1,4,7,2,7,"Objetivo Zettian
+
+Al atacar, si tu segundo Guardia Zettian ataca a la misma figura que el primer Guardia Zettian, añade un dado de ataque al ataque del segundo Guardia Zettian."
+17,1,Konane Kai,Valkrill,90,Cyborg,Unique,Hero,Soldier,Feroz,Large,6,4,7,1,4,3,"Doble Impacto
 
 Cuando Konane ataca, puede atacar una vez adicional (esta habilidad no es utilizable si el primer ataque es una Embestida Ciega)
 
@@ -81,7 +105,163 @@ Si Konane se ha movido al menos 3 espacios en linea recta justo antes de atacar,
 Titanio Reforzado
 
 Los brazos de Konane no pueden utilizarse como objetivo para ataques a distancia"
-12,1,John Panzer,Valkrill,100,Human,Unique,Hero,General,Valiant,Medium,5,4,5,1,3,2,"Estampida
+18,1,Chamán Dakath,Ullar,110,Orc,Unique,Hero,Wizard,Artero,Medium,5,5,5,1,3,3,"Uno con la Naturaleza
+
+Suma 2 dados al ataque si esta figura se encuentra sobre hierba o agua. Suma 2 dados a la defensa si se encuentra en arena o roca
+
+Tecnofobia
+
+Cyborgs y soulborgs no podrán seleccionar a esta figura como objetivo de sus habilidades especiales."
+19,4,Equipo de Rescate de Tharsis,Valkrill,80,Human,Common,Squad,Soldiers,Disciplinado,Medium,4,1,5,5,2,3,"Apoyo Táctico
+
+Al atacar, añade un dado adicional a tu tirada si otro miembro del equipo de rescate está a 3 espacios de distancia (o menos) de la figura atacante."
+20,2,Guardianes Quiria,Jandar,50,Kyrie,Unique,Squad,Warriors,Piadoso,Medium,5,1,6,1,3,2,"Vuelo
+
+Esta figura ignora elevaciones, agua, ruinas y otras figuras al moverse. Si un guardián está trabado en combate al empezar a moverse, deberá destrabarse.
+
+Invocación Quiria
+
+En lugar de atacar o moverte, lanza el dado de 20 caras para resucitar a un guardián caído. Con un número par, el guardián caído resucita adyacente al activo, sin moverse ni atacar este turno. Con un 13, la invocación falla y el guardián activo muere."
+21,1,"Kadne, la Renegada",Utgar,110,Kyrie,Unique,Hero,Warrior,Feroz,Medium,5,5,6,1,3,3,"Aura de Terror
+
+Cualquier figura de una escuadra enemiga que tenga línea de visión con Kadne, lanzará un dado menos al defenderse (min.1)
+
+Odio Visceral
+
+Si Kadne hiere a una figura (excepto si ésta también es seguidora de Utgar), inflige un daño adicional
+
+Vuelo
+
+Esta figura ignora elevaciones, agua, ruinas y otras figuras al moverse. Si Kadne está trabada en combate al empezar a moverse, deberá destrabarse."
+22,4,Patrulla Nandoriana,Ullar,80,Elf,Unique,Squad,Soldiers,Valiente,Medium,5,1,5,1,3,3,"Bosque Protector
+
+Mientras una figura Nandoriana se encuentre en hierba, no podrá ser objetivo de ataques normales a distancia"
+23,4,Arqueros Irhaal,Ullar,80,Elf,Common,Squad,Soldiers,Disciplinado,Medium,5,1,4,6,2,2,"Lluvia de Flechas
+
+Alcance 5, Ataque 6 - Si tres Arqueros Irhaal están adyacentes y no trabados en combate, pueden combinar sus dados en un único ataque.
+Los tres arqueros deben tener línea de visión con el objetivo"
+24,1,"Quinar, la Protectora",Jandar,110,Kyrie,Unique,Hero,Warrior,Piadoso,Medium,5,5,6,1,3,3,"Vuelo
+
+Esta figura ignora elevaciones, agua, ruinas y otras figuras al moverse. Si Quinar está trabada en combate al empezar a moverse, deberá destrabarse.
+
+Mártir de Guerra
+
+Cualquier figura aliada que reciba daño (excepto otras quirias) a 3 espacios de distancia o menos, podrá transferir éstos a Quiniar.
+
+Ángel Vengador
+
+Quiniar lanzará un dado adicional de ataque y defensa por cada 2 daños recibidos"
+25,1,Hogna,Vydar,90,Spider,Common,Hero,Predator,Artero,Small,3,4,7,1,3,3,"Telaraña
+
+Cuando una figura enemiga no-voladora (pequeña o mediana) entre la zona a 3 espacios de distancia de Hogna, deberá terminar ahí su movimiento.
+
+Trepadora
+
+Esta figura ignora elevaciones y ruinas al moverse
+
+Mordisco Tóxico
+
+Si Hogna inflige una herida al atacar, esta causará un daño adicional"
+26,2,Orcos Bersek,Utgar,50,Orc,Unique,Squad,Warriors,Salvaje,Medium,5,1,5,1,4,2,"Sed de Sangre
+
+Una vez por turno, si un orco bersek derrota a una figura, otro orco bersek en su campo de visión podrá volver a moverse para atacar a una figura enemiga a su alcance.
+Si aún no se ha movido, o no hay enemigos a su alcance, la sed de sangre no se activa."
+27,2,Junk Cyborgs,Aquilla,50,Cyborg,Unique,Squad,Soldier,Salvaje,Medium,5,1,5,3,3,2,"Piezas de Repuesto
+
+Si el cyborg derrota a una figura enemiga, puede saquearla. Coloca la figura derrotada sobre esta carta. En adelante, suma un dado más a su ataque y defensa.
+Esta habilidad sólo puede activarse una vez."
+28,3,Corsarios de Aliea,Einar,70,Human,Common,Squad,Pirates,Artero,Medium,5,1,6,5,2,2,"Cazatesoros
+
+Cuando una figura de esta escuadra esté sobre un glifo, puede robarlo en lugar de activarlo. Colócalo (sin desvelarlo) sobre esta carta, las figuras de esta escuadra suman 1 dado a su ataque y defensa por cada glifo robado.
+Los glifos robados se devuelven al mapa cuando el último corsario es derrotado, adyacentes a su última posición"
+29,2,Chiro-Goblins,Vydar,50,Goblin,Unique,Squad,Beast,Feroz,Medium,5,1,7,1,4,2,"Eco-Localización
+
+Si esta figura es objetivo de un ataque a distancia, tira el dado de 20 caras.
+* 1-10: el proyectil alcanza al goblin, tirad dados de ataque y defensa.
+* 11-17: el goblin esquiva el ataque
+* 18-20: el goblin esquiva el ataque y contraataca enfurecido. Mueve al goblin hacia la figura atacante, y atácala si la distancia lo permite."
+30,2,Elfos Acechadores,Ullar,50,Elf,Unique,Squad,Mercenaries,Artero,Medium,5,5,6,1,3,3,"Emboscada
+
+Esta figura suma 3 dados a su ataque si ha comenzado el turno fuera del campo de visión de la figura atacada."
+31,1,Esclavista Uruk,Aquilla,100,Orc,Unique,Hero,Warrior,Artero,Medium,5,5,5,2,3,5,"Largo Alcance
+
+Cualquier figura dentro del alcance del uruk se considera trabada en combate con éste.
+
+Carne de Cañón
+
+En lugar de atacar a un miembro de una escuadra mediana o pequeña, tira el dado de 20 caras. 6 o más, esta figura es esclavizada por el uruk, se moverá con él y absorberá el primer daño que reciba el uruk.
+La figura esclavizada no podrá atacar o utilizar sus habilidades. El Uruk no podrá esclavizar otra figura mientras ésta siga con vida."
+32,1,Portal Pete,Einar,80,Human,Unique,Hero,Wizard,Valiente,Medium,5,5,5,1,2,3,"Teletransporte
+
+En lugar de moverse, Pete puede transportarse a cualquier baldosa libre en un radio de 10 espacios, ignorando elevaciones, obstáculos y otras figuras. Pete acabará su turno sin atacar.
+
+Vortex
+
+En lugar de atacar, tira el dado de 20 caras para usar “Teletransporte” en una figura adyacente (aliada o enemiga). 13 o más, coloca la figura en la baldosa libre de tu elección, en un radio de 10 espacios."
+33,1,Ent Común,Ullar,90,Tree,Unique,Hero,Guardian,Sabio,Huge,8,5,5,1,3,4,"Pastor de Árboles
+
+Alcance 5. Ataque 3. Tras moverse y en lugar de atacar, puedes controlar un árbol a 5 espacios de distancia o menos del Ent, y usarlo para atacar a una figura enemiga adyacente a ese árbol. El árbol no puede moverse, no sufre contraataques y no traba a la figura enemiga en combate.
+
+Raíces Superficiales
+
+Cualquier figura enemiga que inicie su turno a 5 espacios o menos del Ent, verá su movimiento reducido a 3."
+34,1,Ent del Desierto,Einar,90,Tree,Unique,Hero,Guardian,Sabio,Huge,8,4,5,1,3,5,"Corteza Endurecida
+
+El Trent no podrá ser trabado en combate por figuras de tamaño mediano o inferior.
+
+Lanza-Astillas
+
+Alcance 2. Ataque 2. Todas las figuras enemigas dentro del alcance serán afectadas por las astillas. Ataque y defensa lanzarán dados por cada ataque individual."
+35,1,Ent del Volcán,Vydar,90,Tree,Unique,Hero,Guardian,Sabio,Huge,8,4,5,1,4,4,"Armadura de Carbón
+
+Cuando el Ent tira por defensa contra un ataque normal de una figura adyacente, todos los escudos sobrantes cuentan como golpes imparables contra la figura atacante.
+
+Lanzarrocas
+
+Alcance 5. Ataque -. En lugar de moverse y atacar, selecciona una figura enemiga no-adyacente como objetivo. Lanza 4 dados de ataque si el Ent se encuentra en una baldosa de roca, 2 en cualquier otro caso. Ambas figuras ignoran bonificaciones por altura."
+36,1,Ermitaño,Vydar,100,Human,Unique,Hero,General,Piadoso,Medium,5,4,6,1,2,2,"Secretos de Sanación
+
+Una vez por ronda, cuando una figura aliada sea derrotada a 5 espacios de distancia o menos del Ermitaño, podrás colocarla sobre esta carta.
+En tu siguiente turno con el Ermitaño, en lugar de atacar, podrás resucitar (adyacente al Ermitaño) una de las figuras sobre esta carta, asignandole contadores de daño hasta que tenga 1 vida y descartando el resto de figuras sobre esta carta.
+
+Lealtad
+
+Si el Ermitaño es parte de un ejército formado íntegramente por seguidores de Vydar, el coste de esta carta se convierte en 0."
+37,2,Gobies de Asalto,Valkrill,70,Fish,Unique,Squad,Warriors,Feroz,Medium,5,1,5,1,3,3,"Terror Abisal
+
+Cualquier escuadra de tamaño igual o menor a 5 lanzará un dado menos al defenderse del ataque de un Gobie
+
+Anfibios
+
+Los Gobies no detienen su movimiento al entrar en el agua"
+38,1,Guardiana de Seth,Einar,100,Human,Unique,Hero,General,Artero,Medium,5,4,6,1,2,2,"Protectora Fiel
+
+Una vez por ronda, si una figura aliada ataca (o es atacada por) un enemigo adyacente, dentro del rango de movimiento de la Guardiana, puedes mover a ésta a una baldosa adyacente a ambas figuras. La figura aliada lanzará 2 dados más en su tirada. Si no hay una baldosa válida, esta habilidad no se activa
+
+Lealtad
+
+Si la Guardiana es parte de un ejército formado íntegramente por seguidores de Einar, el coste de esta carta se convierte en 0."
+39,1,Harpía Real,Valkrill,80,Beast,Unique,Hero,Hybrid,Artero,Medium,5,4,6,1,3,2,"En Picado
+
+La Harpía sumará 3 dados a su ataque si ha comenzado su turno a una altura de al menos 3 niveles por encima de la figura atacada. Esta habilidad sustituye a la bonificación normal por altura.
+
+Vuelo
+
+Esta figura ignora elevaciones, ruinas y otras figuras al moverse. Si la Harpía está trabada en combate al empezar a moverse, deberá destrabarse."
+40,3,Hermanas Everdeen,Einar,70,Human,Unique,Squad,Soldiers,Disciplinado,Medium,5,1,5,6,2,2,"Camuflaje
+
+Si una Hermana es objetivo de un ataque a distancia, la figura atacante verá su alcance reducido a la mitad (redondeado hacia arriba)"
+41,6,Horda de Trasgos,Vydar,90,Goblin,Unique,Squad,Thieves,Artero,Small,3,1,6,1,1,2,"Oleada
+
+Al atacar, tira un dado adicional por cada Trasgo que ya haya atacado a esa misma figura en este turno."
+42,1,Jefe Banaru,Jandar,100,Human,Unique,Hero,General,Disciplinado,Medium,5,4,5,1,2,3,"Código de Honor
+
+Las figuras enemigas que estén a 5 espacios o menos del Jefe Banaru, y tengan línea de visión con él, deberán utilizar sus valores originales de movimiento, alcance, ataque y defensa, ignorando cualquier incremento/reducción causado por habilidades, glifos o altura.
+
+Lealtad
+
+Si el Jefe es parte de un ejército formado íntegramente por seguidores de Jandar, el coste de esta carta se convierte en 0."
+43,1,John Panzer,Valkrill,100,Human,Unique,Hero,General,Valiente,Medium,5,4,5,1,3,2,"Estampida
 
 Movimiento especial. John podrá atravesar figuras enemigas de tamaño igual o menor al moverse. Tira el dado de 20 caras por cada figura atravesada. 13 o más, esa figura recibe un daño. John no podrá atacar tras intentar una Estampida
 Las figuras adyacentes a John al comenzar una estampida podrán utilizar también esta habilidad hasta el final del turno.
@@ -89,14 +269,73 @@ Las figuras adyacentes a John al comenzar una estampida podrán utilizar tambié
 Lealtad
 
 Si John es parte de un ejército formado íntegramente por seguidores de Valkrill, el coste de esta carta se convierte en 0."
-13,3,Junk Cyborgs,Aquilla,50,Cyborg,Unique,Squad,Soldier,Wild,Medium,5,1,5,3,3,2,"Piezas de Repuesto
+44,4,Legión Augusta,Einar,100,Human,Common,Squad,Soldiers,Disciplinado,Medium,5,1,4,1,2,4,"Tortuga
 
-Si el cyborg derrota a una figura enemiga, puede saquearla. Coloca la figura derrotada sobre esta carta. En adelante, suma un dado más a su ataque y defensa.
-Esta habilidad sólo puede activarse una vez."
-14,1,Wyvern Carmesí,Aquilla,120,Dragon,Unique,Hero,Beast,Ferocious,Medium,5,5,6,1,4,3,"Aliento Abrasador
+Cuando un legionario lanza dados de defensa ante un ataque adyacente, puedes volver a tirar 1 dado por cada legionario adyacente al que está siendo atacado.
+
+La Gloria de Roma
+
+Comienza la partida con 4 legionarios en el mapa y 2 fuera, junto a tu punto de partida.
+Cada vez que un legionario destruya a un héroe enemigo, introduce un legionario adicional adyacente a éste. Los legionarios destruidos no pueden ser re-introducidos a la partida."
+45,4,Milicianas Sombrías,Aquilla,80,Ogre,Common,Squad,Soldiers,Salvaje,Medium,5,1,5,1,2,3,"Armadura Reforzada
+
+Si una Miliciana es objetivo de un ataque normal, contará un escudo más que los obtenidos en su tirada."
+46,4,Ogros del Pantano,Aquilla,80,Ogre,Common,Squad,Soldiers,Salvaje,Medium,5,1,5,1,3,2,"Temerario
+
+Si un ogro es atacado por una figura adyacente, devolverá el ataque simultáneamente (ambas figuras lanzan dados por ataque y defensa, recibiendo los daños correspondientes)."
+47,1,Profeta Corrupto,Aquilla,100,Cyborg,Unique,Hero,General,Piadoso,Medium,5,5,5,1,2,2,"Fe Ciega
+
+Cualquier figura aliada, a 5 espacios o menos del Profeta, que obtenga 0 calaveras al realizar un ataque normal, podrá volver a lanzar los dados. La figura defensora sólo lanzará los dados después de esta segunda tirada.
+
+Lealtad
+
+Si el Profeta es parte de un ejército formado íntegramente por seguidores de Aquilla, el coste de esta carta se convierte en 0."
+48,1,Ranger Klaus,Ullar,100,Human,Unique,Hero,General,Valiente,Medium,5,4,5,5,2,2,"Vigilante
+
+Una vez por ronda, Klaus podrá anticiparse a un ataque adyacente sobre una figura aliada, si ésta está dentro de su alcance y línea de visión. Klaus realizará un ataque normal sobre la figura enemiga, y sólo tras resolverse, la figura enemiga podrá continuar su ataque original.
+
+Lealtad
+
+Si Klaus es parte de un ejército formado íntegramente por seguidores de Ullar, el coste de esta carta se convierte en 0."
+49,1,Rey Ogorin,Utgar,100,Demon,Unique,Hero,General,Cruel,Medium,5,4,5,1,2,3,"Señor de las Almas
+
+Si un miembro de una escuadra aliada es derrotado a 5 espacios o menos del Rey Ogorin, puedes colocar la figura derrotada sobre la carta de un héroe aliado. Si lo haces, retira un contador de daño de esa carta. El héroe aliado añadirá un dado a su ataque por cada dos almas asignadas.
+
+Lealtad
+
+Si el Rey Ogorin es parte de un ejército formado íntegramente por seguidores de Utgar, el coste de esta carta se convierte en 0."
+50,4,Rohirrim,Einar,120,Human,Common,Squad,Soldiers,Valiente,Medium,5,1,8,1,3,3,"Carga al Alba
+
+Un Rohirrim lanzará 2 dados más al atacar si ha comenzado su turno a 6 espacios o más de la figura objetivo
+
+Galope Sostenido
+
+Los Rohirrim sólo contarán 1 movimiento al moverse a una baldosa 1 nivel superior (al subir una diferencia de altura mayor, se aplicará la penalización habitual)"
+51,2,Serpientes del Magma,Valkrill,50,Reptile,Unique,Squad,Beast,Feroz,Large,6,1,6,1,3,3,"Subterráneo
+
+Esta unidad ignora elevaciones al moverse por hierba o arena.
+Si la Serpiente ataca desde una elevación menor, la bonificación por altura se invierte, lanzando el defensor un dado menos."
+52,4,Tropas Urgok,Aquilla,80,Orc,Common,Squad,Warriors,Artero,Medium,5,1,5,5,2,2,"Flecha Envenenada
+
+Si un arquero Urgok ocasiona un daño a una figura enemiga, podrá lanzar un dado adicional. La figura herida no podrá defenderse de esta tirada."
+53,1,Wyvern Carmesí,Aquilla,120,Dragon,Unique,Hero,Beast,Feroz,Medium,5,5,6,1,4,3,"Aliento Abrasador
 
 Alcance 3. Ataque 3. Selecciona una figura a atacar. Todas las figuras adyacentes a ésta también serán afectadas por el ataque. Tira los dados una vez, cada figura afectada debe defenderse individualmente. El Wyvern no es afectado por su propio ataque
 
 Vuelo
 
 Esta figura ignora elevaciones, agua, ruinas y otras figuras al moverse. Si el Wyvern está trabado en combate al empezar a moverse, deberá destrabarse"
+54,2,Zapadores Bufoides,Vydar,50,Frog,Common,Squad,Soldiers,Disciplinado,Medium,5,1,5,1,2,4,"Atrincherado
+
+Si un Zapador es atacado mientras está en una baldosa de tierra o arena, se considerará atrincherado y lanzará dos dados más al defenderse.
+
+Anfibio
+
+Los Zapadores no detienen su movimiento al entrar en el agua."
+55,1,Lider Rebelde de Tharsis,Valkrill,90,Human,Unique,Hero,Champion,Valiente,Medium,4,5,5,1,5,3,"Liderazgo ejemplar  
+                                          
+Cuando esta figura se mueve, cualquier figura ""Disciplinada"" que estuviera adyacente a él podrá seguirle, manteniendo su posición relativa al líder.
+
+Último esfuerzo
+
+Si esta figura es derrotada en combate, y la figura adyacente está dentro del rango de movimiento, realiza un último turno atacando a esta figura. Una vez completado el ataque (o si éste no es posible), retira al Líder del terreno de juego."
