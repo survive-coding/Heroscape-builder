@@ -48,11 +48,14 @@ async function refresh() {
 }
 
 /* ---------- Datos ---------- */
+const COLS = ['ID','number','Name','Faction','Cost','Species','Rarity','Unit Type','Class','Personality','Size','Height','Life','Move','Range','Attack','Defense','Powers'];
 function loadUnits() {
   return new Promise((ok, ko) => Papa.parse('data/unit_data.csv', { download:true, header:true, skipEmptyLines:true,
+    transformHeader: h => COLS.find(c => c.toLowerCase() === h.trim().toLowerCase()) || h.trim(),
     complete: r => {
       S.units = r.data.map(u => {
         ['ID','number','Cost','Height','Life','Move','Range','Attack','Defense'].forEach(k => u[k] = Number(u[k]) || 0);
+        u.number = u.number || 1;
         return u;
       });
       S.units.forEach(u => S.by[u.ID] = u);
@@ -158,7 +161,7 @@ async function finalize() {
         const names = r.conflicts.map(i => S.by[i].Name).join(', ');
         S.ids = S.ids.filter(i => !r.conflicts.includes(i)); saveDraft();
         modal(el('p', {}, 'Otro jugador confirmó antes estas unidades, así que las hemos quitado de tu ejército: ' + names + '. Revisa tu ejército y confirma de nuevo.'));
-      } else modal(el('p', {}, r.error || 'No se pudo confirmar.'));
+      } else modal(el('p', {}, /contrase/i.test(r.error || '') ? 'El script de Google está desactualizado: publica una nueva versión (Implementar, Gestionar implementaciones, editar, Nueva versión).' : (r.error || 'No se pudo confirmar.')));
     }
   } catch (e) { modal(el('p', {}, 'No hay conexión con la hoja de Google. Inténtalo de nuevo.')); }
   S.busy = false; render();
