@@ -5,11 +5,13 @@ window.CONFIG = {
   // Vacío = modo demo: todo se guarda solo en este navegador, con los jugadores de demoPlayers.
   sheetsUrl: 'https://script.google.com/macros/s/AKfycbwxjn61ZS6sb0ilpDBpk9DxduucS7OiUwzaNjxqX-gI0s5mjNO2Rt1Gdqn2ePuEVqeEcw/exec',
   demoPlayers: [
-    { name: 'Jugador 1', password: '1111', budget: 1000 },
-    { name: 'Jugador 2', password: '2222', budget: 1000 },
+    { name: 'Jugador 1', budget: 1000 },
+    { name: 'Jugador 2', budget: 1000 },
   ],
   // Imágenes del mapa (súbelas a /maps)
-  maps: ['maps/map1.jpg'],
+  maps: ['maps/map1.jpg', 'maps/map2.jpg'],
+  // Texto sobre el mapa. Formato: "Título\n\nTexto\n\nOtro título\n\nOtro texto" (vacío = sin recuadro)
+  mapText: 'Reglas del mapa\n\nEscribe aquí las reglas o notas de la partida.',
   // Colores (2 por facción) e icono (emoji, o ruta a imagen: 'images/factions/utgar.png')
   factions: {
     Utgar:   { c: ['#8b1a2b', '#2b1d17'], icon: '🔥' },

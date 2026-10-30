@@ -1,6 +1,6 @@
 const C = CONFIG, app = document.getElementById('app');
 const STATS = [['Life','❤️'],['Move','👣'],['Range','🎯'],['Attack','⚔️'],['Defense','🛡️']];
-const S = { user:null, pw:null, budget:0, players:[], units:[], by:{}, rivals:{}, ids:[], done:false, tab:'build', fac:null, busy:false };
+const S = { user:null, budget:0, players:[], units:[], by:{}, rivals:{}, ids:[], done:false, tab:'build', fac:null, busy:false };
 
 const el = (t, a = {}, ...k) => {
   const e = document.createElement(t);
@@ -20,13 +20,11 @@ const lsGet = () => JSON.parse(localStorage.getItem('hs_armies') || '{}');
 const DB = C.sheetsUrl ? {
   players: () => fetch(C.sheetsUrl + '?action=players').then(r => r.json()),
   armies: () => fetch(C.sheetsUrl + '?action=armies').then(r => r.json()),
-  login: (name, password) => post({ action:'login', name, password }),
-  confirm: (name, password, ids, cost) => post({ action:'confirm', name, password, ids, cost }),
+  confirm: (name, ids, cost) => post({ action:'confirm', name, ids, cost }),
 } : {
   players: async () => C.demoPlayers.map(({ name, budget }) => ({ name, budget })),
   armies: async () => lsGet(),
-  login: async (name, password) => { const p = C.demoPlayers.find(p => p.name === name && p.password === password); return p ? { ok:true, budget:p.budget } : { ok:false, error:'Contraseña incorrecta' }; },
-  confirm: async (name, password, ids, cost) => {
+  confirm: async (name, ids, cost) => {
     const a = lsGet(); if (a[name]) return { ok:false, error:'Ya has confirmado tu ejército' };
     const conflicts = ids.filter(i => Object.values(a).some(x => x.ids.includes(i)));
     if (conflicts.length) return { ok:false, conflicts };
@@ -71,10 +69,13 @@ function modal(content, actions = [['Cerrar']]) {
   document.body.append(m);
   m.querySelector('button')?.focus();
 }
-function powers(u) {
-  const p = (u.Powers || '').split('\n\n');
-  const items = [];
+function powerItems(text) {
+  const p = (text || '').trim() ? text.split('\n\n') : [], items = [];
   for (let i = 0; i < p.length; i += 2) items.push(el('h4', {}, p[i]), el('p', {}, p[i + 1] || ''));
+  return items;
+}
+function powers(u) {
+  const items = powerItems(u.Powers);
   modal([el('h3', {}, u.Name), items.length ? items : el('p', {}, 'Sin poderes especiales.')]);
 }
 const budgetBar = () => {
@@ -96,8 +97,8 @@ function unitImg(u) {
 function card(u, o = {}) {
   const f = C.factions[u.Faction] || { c:['#444','#222'] };
   return el('article', { class:'card', style:`--a:${f.c[0]};--b:${f.c[1]}` },
-    el('header', {}, el('h3', {}, u.Name), u.number > 1 && el('span', { class:'n' }, '×' + u.number), el('span', { class:'cost' }, '🪙 ' + (o.cost ?? u.Cost), o.cost != null && o.cost !== u.Cost && el('s', { class:'was' }, u.Cost))),
-    el('p', { class:'meta' }, `${u['Unit Type']}, ${u.Species}, ${u.Size} ${u.Height}`),
+    el('header', {}, el('h3', {}, u.Name, u.Class === 'General' && el('span', { title:'General', 'aria-label':'General' }, ' 👑')), u.number > 1 && el('span', { class:'n' }, '×' + u.number), el('span', { class:'cost' }, '🪙 ' + (o.cost ?? u.Cost), o.cost != null && o.cost !== u.Cost && el('s', { class:'was' }, u.Cost))),
+    el('p', { class:'meta' }, `${u['Unit Type']}, ${u.Species}, ${u.Class}, ${u.Personality}, ${u.Size} ${u.Height}`),
     el('div', { class:'body' },
       el('div', { class:'pic' + (o.lock ? ' locked' : '') },
         unitImg(u),
@@ -148,7 +149,7 @@ function confirmArmy() {
 async function finalize() {
   S.busy = true; render();
   try {
-    const r = await DB.confirm(S.user, S.pw, S.ids, spent());
+    const r = await DB.confirm(S.user, S.ids, spent());
     if (r.ok) S.done = true;
     else {
       await loadRivals();
@@ -174,7 +175,13 @@ function rivals() {
   return el('section', {}, el('div', { class:'bar' }, el('span', {}, 'Medias por tarjeta de cada ejército confirmado'), el('button', { onclick:refresh }, 'Actualizar')), rows);
 }
 
-const map = () => el('section', { class:'maps' }, C.maps.map(src => el('a', { href:src, target:'_blank' }, el('img', { src, alt:'Mapa de la partida' }))));
+const map = () => el('section', { class:'maps' },
+  C.mapText && el('div', { class:'box' }, powerItems(C.mapText)),
+  C.maps.map(src => {
+    const a = el('a', { href:src, target:'_blank' }, el('img', { src, alt:'Mapa de la partida',
+      onerror:() => a.replaceWith(el('p', { class:'note' }, 'No se encuentra ' + src)) }));
+    return a;
+  }));
 
 function render() {
   const tabs = [['build','Build'],['army','Army'],['rivals','Rivals'],['map','Map']];
@@ -192,25 +199,18 @@ async function login() {
   app.replaceChildren(el('div', { class:'login' }, el('h1', {}, 'Heroscape'), el('p', { style:'margin:0' }, 'Cargando jugadores…'), err));
   try { S.players = await DB.players(); } catch (e) { err.textContent = 'No se pudo conectar con la hoja de Google. Revisa sheetsUrl en config.js.'; return; }
   const sel = el('select', { 'aria-label':'Jugador' }, S.players.map(p => el('option', {}, p.name)));
-  const pw = el('input', { type:'password', placeholder:'Contraseña', 'aria-label':'Contraseña', autocomplete:'current-password' });
-  const btn = el('button', { class:'plus', onclick:go }, 'Entrar');
-  async function go() {
-    btn.disabled = true; err.textContent = 'Entrando…';
-    try {
-      const r = await DB.login(sel.value, pw.value);
-      if (!r.ok) { err.textContent = r.error || 'Contraseña incorrecta.'; btn.disabled = false; return; }
-      sessionStorage.setItem('hs_cred', JSON.stringify({ name:sel.value, pw:pw.value })); start(sel.value, pw.value, r.budget);
-    } catch (e) { err.textContent = 'Sin conexión. Inténtalo de nuevo.'; btn.disabled = false; }
-  }
-  pw.addEventListener('keydown', e => e.key === 'Enter' && go());
-  app.replaceChildren(el('div', { class:'login' }, el('h1', {}, 'Heroscape'), el('p', { style:'margin:0' }, 'Selector de ejércitos'), sel, pw, btn, err));
+  const go = () => { sessionStorage.setItem('hs_cred', sel.value); start(sel.value); };
+  app.replaceChildren(el('div', { class:'login' }, el('h1', {}, 'Heroscape'), el('p', { style:'margin:0' }, 'Selector de ejércitos'),
+    sel, el('button', { class:'plus', onclick:go }, 'Entrar'), err));
 }
 
-async function start(user, pw, budget) {
-  Object.assign(S, { user, pw, budget });
+async function start(user) {
   app.replaceChildren(el('p', { class:'note' }, 'Cargando unidades…'));
   try {
     S.players = await DB.players();
+    const me = S.players.find(p => p.name === user);
+    if (!me) { sessionStorage.removeItem('hs_cred'); return login(); }
+    Object.assign(S, { user, budget:me.budget });
     await loadUnits();
     const mine = await loadRivals();
     if (mine) { S.ids = (mine.ids || []).filter(i => S.by[i]); S.done = true; }
@@ -219,8 +219,5 @@ async function start(user, pw, budget) {
   } catch (e) { app.replaceChildren(el('p', { class:'note' }, 'No se pudieron cargar los datos (data/unit_data.csv o la hoja de Google). Abre la web desde GitHub Pages o un servidor local, no con doble clic.')); }
 }
 
-(async () => {
-  const cred = JSON.parse(sessionStorage.getItem('hs_cred') || 'null');
-  if (cred) { try { const r = await DB.login(cred.name, cred.pw); if (r.ok) return start(cred.name, cred.pw, r.budget); } catch (e) {} }
-  login();
-})();
+const saved = sessionStorage.getItem('hs_cred');
+saved ? start(saved) : login();

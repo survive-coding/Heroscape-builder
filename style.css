@@ -69,3 +69,6 @@ button{min-height:44px;touch-action:manipulation}
  .confirm{width:100%}summary{gap:.3rem .8rem}
 }
 .was{font-weight:400;opacity:.7;margin-left:.3rem}
+.box{background:var(--slate);border:2px solid var(--brass);padding:1.2rem;margin-bottom:1rem}
+.box h4{font:600 1.1rem var(--disp);margin:.8rem 0 .2rem;color:var(--brass)}.box h4:first-child{margin-top:0}
+.box p{margin:0 0 .4rem;white-space:pre-line}
