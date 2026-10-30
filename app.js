@@ -74,6 +74,7 @@ function powerItems(text) {
   for (let i = 0; i < p.length; i += 2) items.push(el('h4', {}, p[i]), el('p', {}, p[i + 1] || ''));
   return items;
 }
+const hasFlight = u => (u.Powers || '').split('\n\n').some((t, i) => i % 2 === 0 && /^vuelo/i.test(t.trim()));
 function powers(u) {
   const items = powerItems(u.Powers);
   modal([el('h3', {}, u.Name), items.length ? items : el('p', {}, 'Sin poderes especiales.')]);
@@ -97,7 +98,7 @@ function unitImg(u) {
 function card(u, o = {}) {
   const f = C.factions[u.Faction] || { c:['#444','#222'] };
   return el('article', { class:'card', style:`--a:${f.c[0]};--b:${f.c[1]}` },
-    el('header', {}, el('h3', {}, u.Name, u.Class === 'General' && el('span', { title:'General', 'aria-label':'General' }, ' 👑')), u.number > 1 && el('span', { class:'n' }, '×' + u.number), el('span', { class:'cost' }, '🪙 ' + (o.cost ?? u.Cost), o.cost != null && o.cost !== u.Cost && el('s', { class:'was' }, u.Cost))),
+    el('header', {}, el('h3', {}, u.Name, u.Class === 'General' && el('span', { title:'General', 'aria-label':'General' }, ' 👑'), o.num && ` (x${u.number})`), !o.num && u.number > 1 && el('span', { class:'n' }, '×' + u.number), el('span', { class:'cost' }, '🪙 ' + (o.cost ?? u.Cost), o.cost != null && o.cost !== u.Cost && el('s', { class:'was' }, u.Cost))),
     el('p', { class:'meta' }, `${u['Unit Type']}, ${u.Species}, ${u.Class}, ${u.Personality}, ${u.Size} ${u.Height}`),
     el('div', { class:'body' },
       el('div', { class:'pic' + (o.lock ? ' locked' : '') },
@@ -127,7 +128,7 @@ function build() {
     el('button', { onclick:() => { S.fac = null; render(); } }, '← Facciones'), el('h2', { style:'margin:.8rem 0' }, S.fac),
     el('div', { class:'grid' }, S.units.filter(u => u.Faction === S.fac).map(u => {
       const lock = lockedBy(u.ID), next = [...S.ids, u.ID];
-      return card(u, { lock, cost:unitCost(u, S.ids.includes(u.ID) ? S.ids : next),
+      return card(u, { num:true, lock, cost:unitCost(u, S.ids.includes(u.ID) ? S.ids : next),
         add:lock ? null : () => { S.ids.push(u.ID); saveDraft(); render(); },
         addOff:S.done || S.ids.includes(u.ID) || spent(next) > budget() });
     })));
@@ -136,7 +137,7 @@ function build() {
 function army() {
   if (!S.ids.length) return el('section', {}, budgetBar(), el('p', { class:'note' }, 'Aún no has elegido unidades. Ve a Build y pulsa + en las que quieras.'));
   return el('section', {}, budgetBar(),
-    el('div', { class:'grid' }, S.ids.map(id => card(S.by[id], { cost:unitCost(S.by[id], S.ids), ...(S.done ? {} : { del:() => { S.ids = S.ids.filter(i => i !== id); saveDraft(); render(); } }) }))),
+    el('div', { class:'grid' }, S.ids.map(id => card(S.by[id], { num:true, cost:unitCost(S.by[id], S.ids), ...(S.done ? {} : { del:() => { S.ids = S.ids.filter(i => i !== id); saveDraft(); render(); } }) }))),
     S.done ? el('p', { class:'note', style:'margin-top:1rem' }, 'Tu ejército está confirmado y ya no se puede modificar.')
            : el('button', { class:'confirm', disabled:S.busy, onclick:confirmArmy }, S.busy ? 'Confirmando…' : 'Confirmar'));
 }
@@ -167,9 +168,17 @@ function rivals() {
   const rows = S.players.filter(p => p.name !== S.user).map(p => {
     const a = S.rivals[p.name], ids = a ? (a.ids || []) : [];
     if (!ids.length) return el('details', {}, el('summary', {}, el('b', {}, p.name), el('span', {}, 'Aún no ha confirmado su ejército')));
-    const avg = k => (ids.reduce((s, i) => s + S.by[i][k], 0) / ids.length).toFixed(1);
+    const avg = k => (ids.reduce((t, i) => t + S.by[i][k], 0) / ids.length).toFixed(1);
+    const us = ids.map(i => S.by[i]), facs = [...new Set(us.map(u => u.Faction))];
+    const fl = facs.length === 1 ? (C.factions[facs[0]] || { icon:'⚑' }) : null;
+    const logo = fl && (fl.icon.includes('/') ? el('img', { src:fl.icon, alt:facs[0], style:'height:1.3em;vertical-align:middle' }) : fl.icon);
     return el('details', {}, el('summary', {}, el('b', {}, p.name),
-      STATS.map(([k, i]) => el('span', {}, `${i} ${avg(k)}`)), el('span', {}, `🪙 ${spent(ids)} gastados`)),
+      STATS.map(([k, i]) => el('span', {}, `${i} ${avg(k)}`)),
+      el('span', {}, '🏹 ' + us.filter(u => u.Range > 1).length),
+      el('span', {}, '🪽 ' + us.filter(hasFlight).length),
+      el('span', {}, '👤 ' + us.reduce((t, u) => t + u.number, 0)),
+      el('span', {}, '🪙 ' + spent(ids)),
+      fl && el('span', {}, '👑 ', logo)),
       el('div', { class:'grid' }, ids.map(i => card(S.by[i], { cost:unitCost(S.by[i], ids) }))));
   });
   return el('section', {}, el('div', { class:'bar' }, el('span', {}, 'Medias por tarjeta de cada ejército confirmado'), el('button', { onclick:refresh }, 'Actualizar')), rows);
