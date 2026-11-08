@@ -1,7 +1,29 @@
+Claude
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+App · JS
 const C = CONFIG, app = document.getElementById('app');
 const STATS = [['Life','❤️'],['Move','👣'],['Range','🎯'],['Attack','⚔️'],['Defense','🛡️']];
-const S = { user:null, budget:0, players:[], units:[], by:{}, rivals:{}, ids:[], done:false, tab:'build', fac:null, busy:false };
-
+const S = { user:null, group:'', budget:0, players:[], units:[], by:{}, rivals:{}, ids:[], done:false, tab:'build', fac:null, busy:false };
+ 
 const el = (t, a = {}, ...k) => {
   const e = document.createElement(t);
   for (const [n, v] of Object.entries(a)) {
@@ -13,7 +35,7 @@ const el = (t, a = {}, ...k) => {
   k.flat(9).forEach(c => { if (c !== false && c != null) e.append(c.nodeType ? c : String(c)); });
   return e;
 };
-
+ 
 /* ---------- Almacenamiento: Google Sheets (Apps Script) o modo demo en el navegador ---------- */
 const post = b => fetch(C.sheetsUrl, { method:'POST', body:JSON.stringify(b) }).then(r => r.json());
 const lsGet = () => JSON.parse(localStorage.getItem('hs_armies') || '{}');
@@ -22,16 +44,18 @@ const DB = C.sheetsUrl ? {
   armies: () => fetch(C.sheetsUrl + '?action=armies').then(r => r.json()),
   confirm: (name, ids, cost) => post({ action:'confirm', name, ids, cost }),
 } : {
-  players: async () => C.demoPlayers.map(({ name, budget }) => ({ name, budget })),
+  players: async () => C.demoPlayers.map(({ name, budget, group }) => ({ name, budget, group:group || '' })),
   armies: async () => lsGet(),
   confirm: async (name, ids, cost) => {
     const a = lsGet(); if (a[name]) return { ok:false, error:'Ya has confirmado tu ejército' };
-    const conflicts = ids.filter(i => Object.values(a).some(x => x.ids.includes(i)));
+    const g = (C.demoPlayers.find(p => p.name === name) || {}).group || '';
+    const mates = C.demoPlayers.filter(p => (p.group || '') === g).map(p => p.name);
+    const conflicts = ids.filter(i => mates.some(n => a[n] && a[n].ids.includes(i)));
     if (conflicts.length) return { ok:false, conflicts };
     a[name] = { ids, cost, at:Date.now() }; localStorage.setItem('hs_armies', JSON.stringify(a)); return { ok:true };
   },
 };
-
+ 
 /* ---------- Estado derivado ---------- */
 const budget = () => S.budget;
 // Un General cuesta 0 mientras todo el ejército sea de su misma facción
@@ -39,14 +63,20 @@ const unitCost = (u, ids) => u.Class === 'General' && ids.every(i => S.by[i].Fac
 const spent = (ids = S.ids) => ids.reduce((t, i) => t + unitCost(S.by[i], ids), 0);
 const lockedBy = id => { for (const [n, a] of Object.entries(S.rivals)) if ((a.ids || []).includes(id)) return n; return null; };
 const saveDraft = () => localStorage.setItem('hs_draft_' + S.user, JSON.stringify(S.ids));
-async function loadRivals() { const all = await DB.armies(); const mine = all[S.user]; delete all[S.user]; S.rivals = all; return mine; }
+async function loadRivals() {
+  // Solo cuentan los jugadores de mi grupo
+  const all = await DB.armies(), mates = new Set(S.players.filter(p => p.group === S.group).map(p => p.name));
+  S.rivals = {};
+  for (const [n, a] of Object.entries(all)) if (n !== S.user && mates.has(n)) S.rivals[n] = a;
+  return all[S.user];
+}
 async function refresh() {
   try {
     const before = JSON.stringify(S.rivals); await loadRivals();
     if (before !== JSON.stringify(S.rivals)) { if (!S.done) S.ids = S.ids.filter(i => !lockedBy(i)); render(); }
   } catch (e) { /* sin conexión: se reintenta */ }
 }
-
+ 
 /* ---------- Datos ---------- */
 const COLS = ['ID','number','Name','Faction','Cost','Species','Rarity','Unit Type','Class','Personality','Size','Height','Life','Move','Range','Attack','Defense','Powers'];
 function loadUnits() {
@@ -62,7 +92,7 @@ function loadUnits() {
       ok();
     }, error: ko }));
 }
-
+ 
 /* ---------- UI genérica ---------- */
 function modal(content, actions = [['Cerrar']]) {
   const m = el('div', { class:'ov', onclick:e => { if (e.target === m) m.remove(); } },
@@ -88,7 +118,7 @@ const budgetBar = () => {
     el('b', { class:left < 0 ? 'over' : '' }, `${left} / ${budget()}`),
     el('span', {}, `${S.ids.length} tarjetas, ${spent()} puntos gastados`), S.done && el('b', {}, '✓ Confirmado'));
 };
-
+ 
 // Prueba las extensiones en orden y usa la primera imagen que exista
 const EXT = ['webp', 'jpg', 'jpeg', 'png'];
 function unitImg(u) {
@@ -97,7 +127,7 @@ function unitImg(u) {
   img.src = `images/${u.ID}.${EXT[0]}`;
   return img;
 }
-
+ 
 function card(u, o = {}) {
   const f = C.factions[u.Faction] || { c:['#444','#222'] };
   return el('article', { class:'card', style:`--a:${f.c[0]};--b:${f.c[1]}` },
@@ -113,10 +143,10 @@ function card(u, o = {}) {
       o.del && el('button', { class:'x', 'aria-label':'Quitar ' + u.Name, onclick:o.del }, '✕'),
       el('button', { 'aria-label':'Poderes de ' + u.Name, onclick:() => powers(u) }, '?')));
 }
-
+ 
 /* ---------- Pestañas ---------- */
 function facIcon(f) { return f.icon.includes('/') ? el('img', { src:f.icon, alt:'' }) : f.icon; }
-
+ 
 function build() {
   if (!S.fac) {
     const names = [...new Set(S.units.map(u => u.Faction))];
@@ -136,7 +166,7 @@ function build() {
         addOff:S.done || S.ids.includes(u.ID) || spent(next) > budget() });
     })));
 }
-
+ 
 function army() {
   if (!S.ids.length) return el('section', {}, budgetBar(), el('p', { class:'note' }, 'Aún no has elegido unidades. Ve a Build y pulsa + en las que quieras.'));
   return el('section', {}, budgetBar(),
@@ -144,7 +174,7 @@ function army() {
     S.done ? el('p', { class:'note', style:'margin-top:1rem' }, 'Tu ejército está confirmado y ya no se puede modificar.')
            : el('button', { class:'confirm', disabled:S.busy, onclick:confirmArmy }, S.busy ? 'Confirmando…' : 'Confirmar'));
 }
-
+ 
 function confirmArmy() {
   modal(el('p', {}, '¿Estás seguro? No podrás realizar cambios tras confirmar.'), [['Cancelar'],
     ['Sí, continuar', () => modal(el('p', {}, `Última comprobación: tu ejército (${S.ids.length} tarjetas, ${spent()} puntos) quedará bloqueado.`),
@@ -166,9 +196,9 @@ async function finalize() {
   } catch (e) { modal(el('p', {}, 'No hay conexión con la hoja de Google. Inténtalo de nuevo.')); }
   S.busy = false; render();
 }
-
+ 
 function rivals() {
-  const rows = S.players.filter(p => p.name !== S.user).map(p => {
+  const rows = S.players.filter(p => p.name !== S.user && p.group === S.group).map(p => {
     const a = S.rivals[p.name], ids = a ? (a.ids || []) : [];
     if (!ids.length) return el('details', {}, el('summary', {}, el('b', {}, p.name), el('span', {}, 'Aún no ha confirmado su ejército')));
     const avg = k => (ids.reduce((t, i) => t + S.by[i][k], 0) / ids.length).toFixed(1);
@@ -186,7 +216,7 @@ function rivals() {
   });
   return el('section', {}, el('div', { class:'bar' }, el('span', {}, 'Medias por tarjeta de cada ejército confirmado'), el('button', { onclick:refresh }, 'Actualizar')), rows);
 }
-
+ 
 const map = () => el('section', { class:'maps' },
   C.mapText && el('div', { class:'box' }, powerItems(C.mapText)),
   C.maps.map(src => {
@@ -194,7 +224,7 @@ const map = () => el('section', { class:'maps' },
       onerror:() => a.replaceWith(el('p', { class:'note' }, 'No se encuentra ' + src)) }));
     return a;
   }));
-
+ 
 function render() {
   const tabs = [['build','Build'],['army','Army'],['rivals','Rivals'],['map','Map']];
   const view = { build, army, rivals, map }[S.tab]();
@@ -204,7 +234,7 @@ function render() {
     el('nav', {}, tabs.map(([k, l]) => el('button', { class:S.tab === k ? 'on' : '', onclick:() => { S.tab = k; render(); scrollTo(0, 0); refresh(); } }, l))),
     el('main', {}, view));
 }
-
+ 
 /* ---------- Inicio de sesión ---------- */
 async function login() {
   const err = el('p', { class:'err', role:'alert' });
@@ -215,14 +245,14 @@ async function login() {
   app.replaceChildren(el('div', { class:'login' }, el('h1', {}, 'Heroscape'), el('p', { style:'margin:0' }, 'Selector de ejércitos'),
     sel, el('button', { class:'plus', onclick:go }, 'Entrar'), err));
 }
-
+ 
 async function start(user) {
   app.replaceChildren(el('p', { class:'note' }, 'Cargando unidades…'));
   try {
     S.players = await DB.players();
     const me = S.players.find(p => p.name === user);
     if (!me) { sessionStorage.removeItem('hs_cred'); return login(); }
-    Object.assign(S, { user, budget:me.budget });
+    Object.assign(S, { user, budget:me.budget, group:me.group || '' });
     await loadUnits();
     const mine = await loadRivals();
     if (mine) { S.ids = (mine.ids || []).filter(i => S.by[i]); S.done = true; }
@@ -230,6 +260,12 @@ async function start(user) {
     render(); setInterval(refresh, 30000);
   } catch (e) { app.replaceChildren(el('p', { class:'note' }, 'No se pudieron cargar los datos (data/unit_data.csv o la hoja de Google). Abre la web desde GitHub Pages o un servidor local, no con doble clic.')); }
 }
-
+ 
 const saved = sessionStorage.getItem('hs_cred');
 saved ? start(saved) : login();
+ 
+
+
+
+
+
