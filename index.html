@@ -8,6 +8,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Alegreya+Sans:wght@400;700&display=swap">
 <link rel="stylesheet" href="style.css">
+<script>
+// Diagnóstico: si algo falla, muestra el error en pantalla en lugar de dejarla negra
+(function () {
+  function show(m) { var a = document.getElementById('app'); if (a) a.innerHTML = '<pre style="color:#ff8b73;padding:1rem;white-space:pre-wrap;font:16px monospace"></pre>', a.firstChild.textContent = m; }
+  addEventListener('error', function (e) {
+    var t = e.target;
+    if (t && t.tagName === 'SCRIPT') show('No se pudo cargar el script: ' + t.src);
+    else if (e.message) show('Error: ' + e.message + ' (' + String(e.filename || '').split('/').pop() + ':' + e.lineno + ':' + e.colno + ')');
+  }, true);
+  addEventListener('unhandledrejection', function (e) { show('Error: ' + ((e.reason && e.reason.message) || e.reason)); });
+})();
+</script>
 </head>
 <body>
 <div id="app"></div>
