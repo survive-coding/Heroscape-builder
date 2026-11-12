@@ -1,5 +1,33 @@
 const C = CONFIG, app = document.getElementById('app');
-const STATS = [['Life','❤️'],['Move','👣'],['Range','🎯'],['Attack','⚔️'],['Defense','🛡️']];
+const STATS = [['Life','life','Vida'],['Move','move','Movimiento'],['Range','range','Alcance'],['Attack','attack','Ataque'],['Defense','defense','Defensa']];
+
+/* ---------- Iconos SVG propios (sustituyen a los emojis) ---------- */
+const SPRITE = `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8a77"/><stop offset=".55" stop-color="#d7263a"/><stop offset="1" stop-color="#8e0f1c"/></linearGradient>
+<linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff2b8"/><stop offset=".5" stop-color="#e2b240"/><stop offset="1" stop-color="#9a6a17"/></linearGradient>
+<linearGradient id="gSilver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#c3ccd4"/><stop offset="1" stop-color="#76828e"/></linearGradient>
+<linearGradient id="gWood" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d49a60"/><stop offset="1" stop-color="#744723"/></linearGradient>
+</defs>
+<symbol id="i-life" viewBox="0 0 32 32"><path d="M16 28.5C6 21 2.8 15.2 2.8 10.7 2.8 7 5.7 4 9.4 4c2.7 0 5 1.5 6.6 3.9C17.600 5.500 19.900 4 22.600 4c3.700 0 6.600 3 6.600 6.700 0 4.500-3.200 10.300-13.200 17.800z" fill="url(#gRed)" stroke="#43070d" stroke-width="1.700" stroke-linejoin="round"/><path d="M8.500 8.200c-2 .6-3 2.600-2.600 4.600" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.800" stroke-linecap="round"/></symbol>
+<symbol id="i-move" viewBox="0 0 32 32"><g fill="url(#gRed)" stroke="#43070d" stroke-width="1.100"><g transform="rotate(-12 10 20)"><path d="M10 12.500c2.800 0 4.200 2.400 4.200 5 0 2.200-.9 3.600-.9 5.400 0 2-1.200 3.100-3.300 3.100S6.700 25 6.700 22.900c0-1.800-1-3.200-1-5.400 0-2.600 1.500-5 4.300-5z"/><circle cx="6.600" cy="9.800" r="1.700"/><circle cx="10.200" cy="8.600" r="1.800"/><circle cx="13.800" cy="9.800" r="1.600"/></g><g transform="rotate(12 22 13)"><path d="M22 5c2.800 0 4.200 2.400 4.200 5 0 2.200-.9 3.600-.9 5.400 0 2-1.200 3.100-3.300 3.100S18.700 17.500 18.700 15.400c0-1.800-1-3.200-1-5.400 0-2.600 1.500-5 4.300-5z"/><circle cx="18.600" cy="2.600" r="1.600"/><circle cx="22.200" cy="1.600" r="1.700"/><circle cx="25.600" cy="2.800" r="1.500"/></g></g></symbol>
+<symbol id="i-range" viewBox="0 0 32 32"><circle cx="15" cy="17" r="12.500" fill="#fff" stroke="#43070d" stroke-width="1.400"/><circle cx="15" cy="17" r="12.500" fill="url(#gRed)" opacity=".95"/><circle cx="15" cy="17" r="9" fill="#f6f1e7"/><circle cx="15" cy="17" r="5.600" fill="url(#gRed)"/><circle cx="15" cy="17" r="2.200" fill="#f6f1e7"/><path d="M15 17L27.500 4.500" stroke="#3c2a18" stroke-width="3" stroke-linecap="round"/><path d="M15 17L27.500 4.500" stroke="#d9c7a0" stroke-width="1.500" stroke-linecap="round"/><path d="M24.500 3.500l4 0 0 4z" fill="#cfd6dc" stroke="#3c2a18" stroke-width=".9" stroke-linejoin="round"/></symbol>
+<symbol id="i-attack" viewBox="0 0 32 32"><g stroke-linecap="round"><path d="M5 5L21 21M27 5L11 21" stroke="#1a1d22" stroke-width="5.400"/><path d="M5 5L21 21M27 5L11 21" stroke="url(#gSilver)" stroke-width="3"/><path d="M17 25.500L25.500 17M15 25.500L6.500 17" stroke="#3a2608" stroke-width="4.200"/><path d="M17 25.500L25.500 17M15 25.500L6.500 17" stroke="url(#gGold)" stroke-width="2.400"/><path d="M22 22L26.500 26.500M10 22L5.500 26.500" stroke="#3a2608" stroke-width="4.200"/><path d="M22 22L26.500 26.500M10 22L5.500 26.500" stroke="#7a4a22" stroke-width="2.400"/></g><circle cx="27.500" cy="27.500" r="2" fill="url(#gGold)" stroke="#3a2608" stroke-width="1"/><circle cx="4.500" cy="27.500" r="2" fill="url(#gGold)" stroke="#3a2608" stroke-width="1"/></symbol>
+<symbol id="i-defense" viewBox="0 0 32 32"><path d="M16 2.800L4.800 6.800v9.200c0 6.800 4.600 10.800 11.200 13.200z" fill="url(#gRed)"/><path d="M16 2.800l11.200 4v9.200c0 6.800-4.600 10.800-11.200 13.200z" fill="url(#gSilver)"/><path d="M16 2.800L4.800 6.800v9.200c0 6.800 4.600 10.800 11.200 13.200 6.600-2.400 11.200-6.400 11.200-13.200V6.800z" fill="none" stroke="#23262b" stroke-width="1.800" stroke-linejoin="round"/><path d="M16 3.500v25" stroke="#23262b" stroke-width="1.100"/></symbol>
+<symbol id="i-crown" viewBox="0 0 32 32"><path d="M3 25L1.800 9.500l7.200 6L16 5l7 10.500 7.200-6L29 25z" fill="url(#gGold)" stroke="#4a2f06" stroke-width="1.500" stroke-linejoin="round"/><rect x="3" y="24" width="26" height="4" rx="1" fill="url(#gGold)" stroke="#4a2f06" stroke-width="1.300"/><circle cx="16" cy="19" r="1.900" fill="#e0283c" stroke="#4a2f06" stroke-width=".8"/><circle cx="9" cy="21" r="1.300" fill="#3e8ee0" stroke="#4a2f06" stroke-width=".7"/><circle cx="23" cy="21" r="1.300" fill="#3e8ee0" stroke="#4a2f06" stroke-width=".7"/></symbol>
+<symbol id="i-cost" viewBox="0 0 32 32"><rect x="7" y="3.500" width="18" height="25" rx="3.200" fill="#15120f" stroke="url(#gGold)" stroke-width="2.200"/><path d="M11.500 9h9M11.500 13h9" stroke="#d9b45a" stroke-width="1.600" stroke-linecap="round" opacity=".8"/></symbol>
+<symbol id="i-bow" viewBox="0 0 32 32"><path d="M9 3.500Q27 16 9 28.500" fill="none" stroke="#3a2210" stroke-width="4.600" stroke-linecap="round"/><path d="M9 3.500Q27 16 9 28.500" fill="none" stroke="url(#gWood)" stroke-width="2.800" stroke-linecap="round"/><path d="M9 3.500V28.500" stroke="#e9dcc0" stroke-width="1"/><path d="M4 16H27" stroke="#e9dcc0" stroke-width="1.700" stroke-linecap="round"/><path d="M25 12.500L30 16 25 19.500z" fill="url(#gSilver)" stroke="#23262b" stroke-width=".8" stroke-linejoin="round"/></symbol>
+<symbol id="i-wing" viewBox="0 0 32 32"><path d="M2.500 22.500C6.500 11 15.500 4.500 29.500 4.500c-4.200 2.800-6.200 5.800-7 9 3-.9 5.600-.7 7.500.3-4 1.800-6.400 4.200-7.300 7.400 2.100 0 4 .5 5.800 1.600-6.500 3.700-15.500 4.800-26 -.3z" fill="url(#gSilver)" stroke="#23262b" stroke-width="1.400" stroke-linejoin="round"/></symbol>
+<symbol id="i-unit" viewBox="0 0 32 32"><circle cx="16" cy="9.500" r="5.600" fill="url(#gSilver)" stroke="#23262b" stroke-width="1.400"/><path d="M4.500 28.500c0-6.600 5-10.800 11.500-10.800s11.500 4.200 11.500 10.800z" fill="url(#gSilver)" stroke="#23262b" stroke-width="1.400" stroke-linejoin="round"/></symbol>
+</svg>`;
+document.body.insertAdjacentHTML('afterbegin', SPRITE);
+const ico = (n, label) => {
+  const i = document.createElement('i');
+  i.className = 'ico';
+  i.innerHTML = `<svg viewBox="0 0 32 32"><use href="#i-${n}"/></svg>`;
+  if (label) { i.setAttribute('role', 'img'); i.setAttribute('aria-label', label); i.title = label; }
+  else i.setAttribute('aria-hidden', 'true');
+  return i;
+};
 const S = { user:null, group:'', budget:0, players:[], units:[], by:{}, rivals:{}, ids:[], done:false, tab:'build', fac:null, busy:false };
 
 const el = (t, a = {}, ...k) => {
@@ -109,17 +137,20 @@ function unitImg(u) {
 function card(u, o = {}) {
   const f = C.factions[u.Faction] || { c:['#444','#222'] };
   return el('article', { class:'card', style:`--a:${f.c[0]};--b:${f.c[1]}` },
-    el('header', {}, el('h3', {}, u.Name, u.Class === 'General' && el('span', { title:'General', 'aria-label':'General' }, ' 👑'), o.num && ` (x${u.number})`), !o.num && u.number > 1 && el('span', { class:'n' }, '×' + u.number), el('span', { class:'cost' }, '🪙 ' + (o.cost ?? u.Cost), o.cost != null && o.cost !== u.Cost && el('s', { class:'was' }, u.Cost))),
+    el('header', {},
+      el('h3', {}, u.Name, u.Class === 'General' && ico('crown', 'General'), o.num && ` (x${u.number})`),
+      !o.num && u.number > 1 && el('span', { class:'n' }, '×' + u.number),
+      el('span', { class:'cost' }, ico('cost', 'Coste'), String(o.cost ?? u.Cost), o.cost != null && o.cost !== u.Cost && el('s', { class:'was' }, u.Cost))),
     el('p', { class:'meta' }, `${u['Unit Type']}, ${u.Species}, ${u.Class}, ${u.Personality}, ${u.Size} ${u.Height}`),
     el('div', { class:'body' },
       el('div', { class:'pic' + (o.lock ? ' locked' : '') },
         unitImg(u),
         o.lock && el('b', { class:'who' }, o.lock)),
-      el('ul', { class:'stats' }, STATS.map(([k, i]) => el('li', {}, i, el('span', {}, u[k]))))),
+      el('ul', { class:'stats' }, STATS.map(([k, i, name]) => el('li', {}, ico(i, name), el('span', {}, u[k]))))),
     el('footer', {},
-      o.add && el('button', { class:'plus', 'aria-label':'Añadir ' + u.Name, disabled:o.addOff, onclick:o.add }, S.ids.includes(u.ID) ? '✓' : '+'),
+      o.add && el('button', { class:'plus' + (S.ids.includes(u.ID) ? ' on' : ''), 'aria-label':'Añadir ' + u.Name, disabled:o.addOff, onclick:o.add }, S.ids.includes(u.ID) ? '✓' : '+'),
       o.del && el('button', { class:'x', 'aria-label':'Quitar ' + u.Name, onclick:o.del }, '✕'),
-      el('button', { 'aria-label':'Poderes de ' + u.Name, onclick:() => powers(u) }, '?')));
+      el('button', { class:'help', 'aria-label':'Poderes de ' + u.Name, onclick:() => powers(u) }, '?')));
 }
 
 /* ---------- Pestañas ---------- */
@@ -131,12 +162,12 @@ function build() {
     return el('section', {}, budgetBar(), el('div', { class:'facs' }, names.map(n => {
       const f = C.factions[n] || { c:['#444','#222'], icon:'⚑' };
       const free = S.units.filter(u => u.Faction === n && !lockedBy(u.ID)).length;
-      return el('button', { class:'fac', style:`--a:${f.c[0]};--b:${f.c[1]}`, onclick:() => { S.fac = n; render(); } },
+      return el('button', { class:'fac', style:`--a:${f.c[0]};--b:${f.c[1]}` + (f.frame ? `;--frame:url(${f.frame})` : ''), onclick:() => { S.fac = n; render(); } },
         el('span', { class:'ic' }, facIcon(f)), el('strong', {}, n), el('small', {}, `${free} unidades disponibles`));
     })));
   }
   return el('section', {}, budgetBar(),
-    el('button', { onclick:() => { S.fac = null; render(); } }, '← Facciones'), el('h2', { style:'margin:.8rem 0' }, S.fac),
+    el('button', { onclick:() => { S.fac = null; render(); } }, '← Facciones'), el('h2', { class:'ttl' }, S.fac),
     el('div', { class:'grid' }, S.units.filter(u => u.Faction === S.fac).map(u => {
       const lock = lockedBy(u.ID), next = [...S.ids, u.ID];
       return card(u, { num:true, lock, cost:unitCost(u, S.ids.includes(u.ID) ? S.ids : next),
@@ -182,14 +213,14 @@ function rivals() {
     const avg = k => (ids.reduce((t, i) => t + S.by[i][k], 0) / ids.length).toFixed(1);
     const us = ids.map(i => S.by[i]), facs = [...new Set(us.map(u => u.Faction))];
     const fl = facs.length === 1 ? (C.factions[facs[0]] || { icon:'⚑' }) : null;
-    const logo = fl && (fl.icon.includes('/') ? el('img', { src:fl.icon, alt:facs[0], style:'height:1.3em;vertical-align:middle' }) : fl.icon);
+    const logo = fl && (fl.icon.includes('/') ? el('img', { src:fl.icon, alt:facs[0], class:'flogo' }) : fl.icon);
     return el('details', {}, el('summary', {}, el('b', {}, p.name),
-      STATS.map(([k, i]) => el('span', {}, `${i} ${avg(k)}`)),
-      el('span', {}, '🏹 ' + us.filter(u => u.Range > 1).length),
-      el('span', {}, '🪽 ' + us.filter(hasFlight).length),
-      el('span', {}, '👤 ' + us.reduce((t, u) => t + u.number, 0)),
-      el('span', {}, '🪙 ' + spent(ids)),
-      fl && el('span', {}, '👑 ', logo)),
+      STATS.map(([k, i, name]) => el('span', {}, ico(i, name), avg(k))),
+      el('span', {}, ico('bow', 'Unidades a distancia'), String(us.filter(u => u.Range > 1).length)),
+      el('span', {}, ico('wing', 'Unidades con vuelo'), String(us.filter(hasFlight).length)),
+      el('span', {}, ico('unit', 'Figuras'), String(us.reduce((t, u) => t + u.number, 0))),
+      el('span', {}, ico('cost', 'Coste total'), String(spent(ids))),
+      fl && el('span', {}, ico('crown', 'Facción única'), logo)),
       el('div', { class:'grid' }, ids.map(i => card(S.by[i], { cost:unitCost(S.by[i], ids) }))));
   });
   return el('section', {}, el('div', { class:'bar' }, el('span', {}, 'Medias por tarjeta de cada ejército confirmado'), el('button', { onclick:refresh }, 'Actualizar')), rows);
