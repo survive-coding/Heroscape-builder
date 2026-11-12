@@ -34,10 +34,21 @@ button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visi
 /* ---------- Paneles ---------- */
 .login,.bar,.dlg,.box,details{background:var(--panel);border:3px solid;border-color:var(--edge);
  box-shadow:0 0 0 1px #000,inset 0 0 0 1px #000a,inset 0 0 0 2px #b6914a40,inset 0 0 22px #0009,0 6px 14px #0008}
-.login{max-width:380px;margin:12vh auto;padding:2rem;display:grid;gap:.9rem}
+/* Login: mismo marco de piedra que las tarjetas, semitransparente, con gema superior */
+body.login-screen{background:var(--login-bg,none) center/cover no-repeat fixed,var(--ink)}
+.login{--a:#b6914a;position:relative;width:min(430px,calc(100% - 2rem));margin:14vh auto 2rem;padding:2.2rem 1.6rem 1.8rem;display:grid;gap:1.1rem;border-radius:3px;
+ background:var(--grain),rgba(20,17,14,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+ border:3px solid;border-color:#a39d8c #4e4a42 #34312b #7d776a;
+ box-shadow:0 0 0 1px #000,0 10px 28px #000b,inset 0 0 0 1px #000b,inset 0 0 28px #0008}
+.login::before{content:"";position:absolute;z-index:3;top:-10px;left:50%;width:15px;height:15px;transform:translateX(-50%) rotate(45deg);
+ background:radial-gradient(circle at 35% 30%,#fff 0 10%,#f0cf7a 35%,#b6914a 68%,#000 140%);border:2px solid #9a9484;box-shadow:0 0 0 1px #000,0 0 9px #b6914a}
+.login .loading{margin:0;text-align:center}
+.login .plus{min-height:52px;font-size:1.25rem}
+.login select{width:100%}
+.login .err:empty{display:none}
 .login h1,.top h1{background:var(--gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 2px 0 #000a)}
-.login h1{font-size:2rem;font-weight:800}
-.login select,.login input{font:inherit;padding:.6em;background:#0f0d0b;color:var(--bone);border:2px solid #6b5530;box-shadow:inset 0 2px 6px #000}
+.login h1{font-size:clamp(2.4rem,11vw,3.4rem);font-weight:800;text-align:center;line-height:1.05;letter-spacing:.02em}
+.login select,.login input{font:inherit;padding:.6em;background:#0f0d0b99;color:var(--bone);border:2px solid #6b5530;box-shadow:inset 0 2px 6px #000}
 .err{color:#ff8b73;min-height:1.3em;margin:0}
 
 /* ---------- Navegación ---------- */

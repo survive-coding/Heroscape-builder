@@ -247,15 +247,18 @@ function render() {
 /* ---------- Inicio de sesión ---------- */
 async function login() {
   const err = el('p', { class:'err', role:'alert' });
-  app.replaceChildren(el('div', { class:'login' }, el('h1', {}, 'Heroscape'), el('p', { style:'margin:0' }, 'Cargando jugadores…'), err));
+  document.body.classList.add('login-screen');
+  if (C.loginBg) document.body.style.setProperty('--login-bg', `url(${C.loginBg})`);
+  app.replaceChildren(el('div', { class:'login' }, el('h1', {}, 'Heroscape'), el('p', { class:'loading' }, 'Cargando jugadores…'), err));
   try { S.players = await DB.players(); } catch (e) { err.textContent = 'No se pudo conectar con la hoja de Google. Revisa sheetsUrl en config.js.'; return; }
   const sel = el('select', { 'aria-label':'Jugador' }, S.players.map(p => el('option', {}, p.name)));
   const go = () => { sessionStorage.setItem('hs_cred', sel.value); start(sel.value); };
-  app.replaceChildren(el('div', { class:'login' }, el('h1', {}, 'Heroscape'), el('p', { style:'margin:0' }, 'Selector de ejércitos'),
+  app.replaceChildren(el('div', { class:'login' }, el('h1', {}, 'Heroscape'),
     sel, el('button', { class:'plus', onclick:go }, 'Entrar'), err));
 }
 
 async function start(user) {
+  document.body.classList.remove('login-screen');
   app.replaceChildren(el('p', { class:'note' }, 'Cargando unidades…'));
   try {
     S.players = await DB.players();

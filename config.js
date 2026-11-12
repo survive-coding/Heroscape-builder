@@ -8,6 +8,8 @@ window.CONFIG = {
     { name: 'Jugador 1', budget: 1000 },
     { name: 'Jugador 2', budget: 1000 },
   ],
+  // Imagen de fondo de la pantalla de login (webp). Si el archivo no existe, se ve el fondo oscuro normal.
+  loginBg: 'images/login-bg.webp',
   // Imágenes del mapa (súbelas a /maps)
   maps: ['maps/map1.jpg', 'maps/map2.jpg'],
   // Texto sobre el mapa. Formato: "Título\n\nTexto\n\nOtro título\n\nOtro texto" (vacío = sin recuadro)
