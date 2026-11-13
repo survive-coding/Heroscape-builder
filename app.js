@@ -6,6 +6,7 @@ const SPRITE = `<svg width="0" height="0" style="position:absolute" aria-hidden=
 <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8a77"/><stop offset=".55" stop-color="#d7263a"/><stop offset="1" stop-color="#8e0f1c"/></linearGradient>
 <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff2b8"/><stop offset=".5" stop-color="#e2b240"/><stop offset="1" stop-color="#9a6a17"/></linearGradient>
 <linearGradient id="gSilver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#c3ccd4"/><stop offset="1" stop-color="#76828e"/></linearGradient>
+<linearGradient id="gWing" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#cfe3f5"/><stop offset="1" stop-color="#7ea3c9"/></linearGradient>
 <linearGradient id="gWood" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d49a60"/><stop offset="1" stop-color="#744723"/></linearGradient>
 </defs>
 <symbol id="i-life" viewBox="0 0 32 32"><path d="M16 28.5C6 21 2.8 15.2 2.8 10.7 2.8 7 5.7 4 9.4 4c2.7 0 5 1.5 6.6 3.9C17.600 5.500 19.900 4 22.600 4c3.700 0 6.600 3 6.600 6.700 0 4.500-3.200 10.300-13.200 17.800z" fill="url(#gRed)" stroke="#43070d" stroke-width="1.700" stroke-linejoin="round"/><path d="M8.500 8.200c-2 .6-3 2.600-2.600 4.600" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.800" stroke-linecap="round"/></symbol>
@@ -14,15 +15,15 @@ const SPRITE = `<svg width="0" height="0" style="position:absolute" aria-hidden=
 <symbol id="i-attack" viewBox="0 0 32 32"><g stroke-linecap="round"><path d="M5 5L21 21M27 5L11 21" stroke="#1a1d22" stroke-width="5.400"/><path d="M5 5L21 21M27 5L11 21" stroke="url(#gSilver)" stroke-width="3"/><path d="M17 25.500L25.500 17M15 25.500L6.500 17" stroke="#3a2608" stroke-width="4.200"/><path d="M17 25.500L25.500 17M15 25.500L6.500 17" stroke="url(#gGold)" stroke-width="2.400"/><path d="M22 22L26.500 26.500M10 22L5.500 26.500" stroke="#3a2608" stroke-width="4.200"/><path d="M22 22L26.500 26.500M10 22L5.500 26.500" stroke="#7a4a22" stroke-width="2.400"/></g><circle cx="27.500" cy="27.500" r="2" fill="url(#gGold)" stroke="#3a2608" stroke-width="1"/><circle cx="4.500" cy="27.500" r="2" fill="url(#gGold)" stroke="#3a2608" stroke-width="1"/></symbol>
 <symbol id="i-defense" viewBox="0 0 32 32"><path d="M16 2.800L4.800 6.800v9.200c0 6.800 4.600 10.800 11.200 13.200z" fill="url(#gRed)"/><path d="M16 2.800l11.200 4v9.200c0 6.800-4.600 10.800-11.200 13.200z" fill="url(#gSilver)"/><path d="M16 2.800L4.800 6.800v9.200c0 6.800 4.600 10.800 11.200 13.200 6.600-2.400 11.200-6.400 11.200-13.200V6.800z" fill="none" stroke="#23262b" stroke-width="1.800" stroke-linejoin="round"/><path d="M16 3.500v25" stroke="#23262b" stroke-width="1.100"/></symbol>
 <symbol id="i-crown" viewBox="0 0 32 32"><path d="M3 25L1.800 9.500l7.200 6L16 5l7 10.500 7.200-6L29 25z" fill="url(#gGold)" stroke="#4a2f06" stroke-width="1.500" stroke-linejoin="round"/><rect x="3" y="24" width="26" height="4" rx="1" fill="url(#gGold)" stroke="#4a2f06" stroke-width="1.300"/><circle cx="16" cy="19" r="1.900" fill="#e0283c" stroke="#4a2f06" stroke-width=".8"/><circle cx="9" cy="21" r="1.300" fill="#3e8ee0" stroke="#4a2f06" stroke-width=".7"/><circle cx="23" cy="21" r="1.300" fill="#3e8ee0" stroke="#4a2f06" stroke-width=".7"/></symbol>
-<symbol id="i-cost" viewBox="0 0 32 32"><rect x="7" y="3.500" width="18" height="25" rx="3.200" fill="#15120f" stroke="url(#gGold)" stroke-width="2.200"/><path d="M11.500 9h9M11.500 13h9" stroke="#d9b45a" stroke-width="1.600" stroke-linecap="round" opacity=".8"/></symbol>
+<symbol id="i-cost" viewBox="0 0 32 32"><circle cx="16" cy="16" r="13.500" fill="url(#gGold)" stroke="#4a2f06" stroke-width="1.700"/><circle cx="16" cy="16" r="10" fill="none" stroke="#8a5a12" stroke-width="1.500"/><path d="M16 10.200l4.600 5.800-4.600 5.800-4.600-5.800z" fill="#8a5a12" stroke="#5a3a08" stroke-width=".8" stroke-linejoin="round"/><path d="M7 11.500A10 10 0 0 1 13 6.500" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.600" stroke-linecap="round"/></symbol>
 <symbol id="i-bow" viewBox="0 0 32 32"><path d="M9 3.500Q27 16 9 28.500" fill="none" stroke="#3a2210" stroke-width="4.600" stroke-linecap="round"/><path d="M9 3.500Q27 16 9 28.500" fill="none" stroke="url(#gWood)" stroke-width="2.800" stroke-linecap="round"/><path d="M9 3.500V28.500" stroke="#e9dcc0" stroke-width="1"/><path d="M4 16H27" stroke="#e9dcc0" stroke-width="1.700" stroke-linecap="round"/><path d="M25 12.500L30 16 25 19.500z" fill="url(#gSilver)" stroke="#23262b" stroke-width=".8" stroke-linejoin="round"/></symbol>
-<symbol id="i-wing" viewBox="0 0 32 32"><path d="M2.500 22.500C6.500 11 15.500 4.500 29.500 4.500c-4.200 2.800-6.200 5.800-7 9 3-.9 5.600-.7 7.500.3-4 1.800-6.400 4.200-7.300 7.400 2.100 0 4 .5 5.800 1.600-6.500 3.700-15.500 4.800-26 -.3z" fill="url(#gSilver)" stroke="#23262b" stroke-width="1.400" stroke-linejoin="round"/></symbol>
+<symbol id="i-wing" viewBox="0 0 32 32"><g stroke="#1f3350" stroke-width="1.300" stroke-linejoin="round"><ellipse cx="11" cy="23.500" rx="7.800" ry="3.200" transform="rotate(37 11 23.500)" fill="url(#gWing)"/><ellipse cx="16" cy="18.500" rx="9.800" ry="3.400" transform="rotate(35 16 18.500)" fill="url(#gWing)"/><ellipse cx="20.500" cy="13" rx="9.800" ry="3.400" transform="rotate(30 20.500 13)" fill="url(#gWing)"/><ellipse cx="24.500" cy="8.500" rx="7.200" ry="3" transform="rotate(25 24.500 8.500)" fill="url(#gWing)"/><path d="M3 27C1.800 14 8.500 5.200 19 3.800c4.500-.6 8.500.2 10.500 1.400C22.500 6.800 15.500 10.500 12 18.500 9.800 23 6.500 26 3 27z" fill="url(#gWing)"/></g><path d="M5.200 23C5.500 15 10 8.500 18 6" fill="none" stroke="#fff" stroke-opacity=".9" stroke-width="1.500" stroke-linecap="round"/></symbol>
 <symbol id="i-unit" viewBox="0 0 32 32"><circle cx="16" cy="9.500" r="5.600" fill="url(#gSilver)" stroke="#23262b" stroke-width="1.400"/><path d="M4.500 28.500c0-6.600 5-10.800 11.500-10.800s11.500 4.200 11.500 10.800z" fill="url(#gSilver)" stroke="#23262b" stroke-width="1.400" stroke-linejoin="round"/></symbol>
 </svg>`;
 document.body.insertAdjacentHTML('afterbegin', SPRITE);
 const ico = (n, label) => {
   const i = document.createElement('i');
-  i.className = 'ico';
+  i.className = 'ico i-' + n;
   i.innerHTML = `<svg viewBox="0 0 32 32"><use href="#i-${n}"/></svg>`;
   if (label) { i.setAttribute('role', 'img'); i.setAttribute('aria-label', label); i.title = label; }
   else i.setAttribute('aria-hidden', 'true');
@@ -148,7 +149,7 @@ function card(u, o = {}) {
         o.lock && el('b', { class:'who' }, o.lock)),
       el('ul', { class:'stats' }, STATS.map(([k, i, name]) => el('li', {}, ico(i, name), el('span', {}, u[k]))))),
     el('footer', {},
-      o.add && el('button', { class:'plus' + (S.ids.includes(u.ID) ? ' on' : ''), 'aria-label':'Añadir ' + u.Name, disabled:o.addOff, onclick:o.add }, S.ids.includes(u.ID) ? '✓' : '+'),
+      o.add && el('button', { class:'plus' + (S.ids.includes(u.ID) ? ' on' : ''), 'aria-label':(S.ids.includes(u.ID) ? 'Quitar ' : 'Añadir ') + u.Name, disabled:o.addOff, onclick:o.add }, S.ids.includes(u.ID) ? '✓' : '+'),
       o.del && el('button', { class:'x', 'aria-label':'Quitar ' + u.Name, onclick:o.del }, '✕'),
       el('button', { class:'help', 'aria-label':'Poderes de ' + u.Name, onclick:() => powers(u) }, '?')));
 }
@@ -171,8 +172,8 @@ function build() {
     el('div', { class:'grid' }, S.units.filter(u => u.Faction === S.fac).map(u => {
       const lock = lockedBy(u.ID), next = [...S.ids, u.ID];
       return card(u, { num:true, lock, cost:unitCost(u, S.ids.includes(u.ID) ? S.ids : next),
-        add:lock ? null : () => { S.ids.push(u.ID); saveDraft(); render(); },
-        addOff:S.done || S.ids.includes(u.ID) || spent(next) > budget() });
+        add:lock ? null : () => { S.ids = S.ids.includes(u.ID) ? S.ids.filter(i => i !== u.ID) : [...S.ids, u.ID]; saveDraft(); render(); },
+        addOff:S.done || (!S.ids.includes(u.ID) && spent(next) > budget()) });
     })));
 }
 
@@ -259,7 +260,7 @@ async function login() {
 
 async function start(user) {
   document.body.classList.remove('login-screen');
-  app.replaceChildren(el('p', { class:'note' }, 'Cargando unidades…'));
+  app.replaceChildren(el('p', { class:'loadscreen', role:'status' }, 'Cargando unidades…'));
   try {
     S.players = await DB.players();
     const me = S.players.find(p => p.name === user);

@@ -121,12 +121,14 @@ h2,.ttl{font:800 1.8rem var(--disp);margin:.9rem 0;background:var(--gold);-webki
 /* botones de la tarjeta */
 .card footer{display:flex;gap:.6rem;padding:0 .7rem .75rem}
 .card footer button{flex:1;min-height:52px;font:800 1.5rem var(--disp)}
-.card footer .plus,.card footer .x{font-size:2rem}
-.card footer .help{color:#f0cf7a;text-shadow:0 0 8px #f0cf7a66,0 2px 2px #000;background:var(--grain),linear-gradient(180deg,#1b1712,#0f0d0a);
- border:4px double #d5ab52;box-shadow:inset 0 0 12px #000,0 2px 0 #000}
+.card footer .plus,.card footer .x,.card footer .help{font-size:2rem}
+.card footer .help{color:#000;text-shadow:0 1px 0 #fff8;background:var(--grain),var(--mottle),linear-gradient(180deg,#eadcb4,#cdb683);
+ border:4px double #d5ab52;box-shadow:inset 0 0 14px #8a622399,0 2px 0 #000}
 
 .confirm{display:block;margin:1.5rem auto 0;min-width:260px;min-height:56px;padding:.8em 1.4em;font:800 1.2rem var(--disp);color:#e3e6da;text-shadow:0 2px 2px #000;
  background:var(--grain),var(--mottle),radial-gradient(ellipse at 50% 15%,#3a7a4a,#1f4a2d 60%,#143220);border-color:#b3b4aa #55564f #3a3b36 #8f9088}
+.loadscreen{position:fixed;inset:0;margin:0;display:grid;place-items:center;text-align:center;padding:1rem;pointer-events:none;
+ font:800 clamp(1.9rem,8vw,3rem)/1.1 var(--disp);background:var(--gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 3px 0 #000b)}
 .note{padding:1rem;border:2px dashed #8a6f3a;background:#ffffff08}
 
 /* ---------- Rivales ---------- */
@@ -135,6 +137,7 @@ summary{cursor:pointer;padding:.7rem .9rem;display:flex;gap:.5rem 1rem;flex-wrap
 summary b{font:800 1.2rem var(--disp);color:#f4e4b4;text-shadow:0 2px 2px #000}
 summary span{display:inline-flex;align-items:center;gap:.3rem}
 summary .ico{width:1.35em;height:1.35em}
+summary .i-wing{width:1.9em;height:1.9em}
 .flogo{height:1.4em;vertical-align:middle}
 details .grid{padding:1rem}
 
