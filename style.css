@@ -26,10 +26,25 @@ button:hover:not(:disabled){filter:brightness(1.2)}
 button:active:not(:disabled){transform:translateY(1px);box-shadow:inset 0 0 8px #000a}
 button:disabled{opacity:.35;cursor:not-allowed}
 button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #f0cf7a;outline-offset:2px}
-.plus,.x{font-family:var(--disp);font-weight:800;color:#e3e6da;text-shadow:0 2px 2px #000;border-color:#b3b4aa #55564f #3a3b36 #8f9088}
-.plus{background:var(--grain),var(--mottle),radial-gradient(ellipse at 50% 15%,#3a7a4a,#1f4a2d 60%,#143220)}
+.plus,.x,.help{--c:17px;--b:3px;--rim:linear-gradient(135deg,#f6f6ee,#9a9b92 38%,#3b3c37 62%,#c4c5bb);
+ position:relative;isolation:isolate;border:0;border-radius:0;box-shadow:none;padding:.15em 1.5em;line-height:1;
+ font-family:var(--disp);font-weight:800;color:#e3e6da;text-shadow:0 2px 2px #000;
+ background:var(--rim);clip-path:polygon(var(--c) 0,calc(100% - var(--c)) 0,100% 50%,calc(100% - var(--c)) 100%,var(--c) 100%,0 50%)}
+.plus::before,.x::before,.help::before{content:"";position:absolute;z-index:-1;inset:var(--b);
+ background:linear-gradient(180deg,#ffffff33 0 49%,#0000003d 51% 100%),var(--fill);
+ clip-path:polygon(calc(var(--c) - 2px) 0,calc(100% - var(--c) + 2px) 0,calc(100% - 1px) 50%,calc(100% - var(--c) + 2px) 100%,calc(var(--c) - 2px) 100%,1px 50%)}
+.plus:active:not(:disabled),.x:active:not(:disabled),.help:active:not(:disabled){box-shadow:none}
+/* el contorno normal queda recortado por la forma: el foco se marca con un borde claro */
+.plus:focus-visible,.x:focus-visible,.help:focus-visible{outline:none;--rim:linear-gradient(#fff,#fff)}
+/* + verde */
+.plus{--fill:var(--grain),var(--mottle),radial-gradient(ellipse at 50% 15%,#3a7a4a,#1f4a2d 60%,#143220)}
+/* ✓ dorado (unidad seleccionada) */
+.plus.on{--rim:linear-gradient(135deg,#fff3c0,#d9a93a 40%,#7a5313 62%,#f0cf7a);--fill:var(--grain),radial-gradient(ellipse at 50% 15%,#f6dc83,#d0a038 58%,#94661a);color:#2b1a05;text-shadow:0 1px 0 #fff8}
 .plus.on:disabled{opacity:1}
-.x{background:var(--grain),var(--mottle),radial-gradient(ellipse at 50% 15%,#a5442f,#6a2316 60%,#40130c)}
+/* ✕ rojo */
+.x{--fill:var(--grain),var(--mottle),radial-gradient(ellipse at 50% 15%,#a5442f,#6a2316 60%,#40130c)}
+/* ? papel con canto dorado */
+.help{--rim:linear-gradient(135deg,#fff0b0,#d5a640 40%,#7a5313 62%,#f0cf7a);--fill:var(--grain),var(--mottle),linear-gradient(180deg,#eadcb4,#cdb683);color:#000;text-shadow:0 1px 0 #fff8}
 
 /* ---------- Paneles ---------- */
 .login,.bar,.dlg,.box,details{background:var(--panel);border:3px solid;border-color:var(--edge);
@@ -43,7 +58,7 @@ body.login-screen{background:var(--login-bg,none) center/cover no-repeat fixed,v
 .login::before{content:"";position:absolute;z-index:3;top:-10px;left:50%;width:15px;height:15px;transform:translateX(-50%) rotate(45deg);
  background:radial-gradient(circle at 35% 30%,#fff 0 10%,#f0cf7a 35%,#b6914a 68%,#000 140%);border:2px solid #9a9484;box-shadow:0 0 0 1px #000,0 0 9px #b6914a}
 .login .loading{margin:0;text-align:center}
-.login .plus{min-height:52px;font-size:1.25rem}
+.login .plus{--c:24px;min-height:52px;font-size:1.25rem}
 .login select{width:100%}
 .login .err:empty{display:none}
 .login h1,.top h1{background:var(--gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 2px 0 #000a)}
@@ -120,10 +135,9 @@ h2,.ttl{font:800 1.8rem var(--disp);margin:.9rem 0;background:var(--gold);-webki
 .stats li span{font:800 1.5rem/1 var(--disp);color:#f6e6b4;text-shadow:0 2px 2px #000}
 /* botones de la tarjeta */
 .card footer{display:flex;gap:.6rem;padding:0 .7rem .75rem}
-.card footer button{flex:1;min-height:52px;font:800 1.5rem var(--disp)}
-.card footer .plus,.card footer .x,.card footer .help{font-size:2rem}
-.card footer .help{color:#000;text-shadow:0 1px 0 #fff8;background:var(--grain),var(--mottle),linear-gradient(180deg,#eadcb4,#cdb683);
- border:4px double #d5ab52;box-shadow:inset 0 0 14px #8a622399,0 2px 0 #000}
+.card footer button{flex:1;min-height:38px;font:800 1.5rem/1 var(--disp)}
+.card footer .plus,.card footer .x,.card footer .help{--c:17px}
+.card footer .plus,.card footer .x{font-size:2rem}
 
 .confirm{display:block;margin:1.5rem auto 0;min-width:260px;min-height:56px;padding:.8em 1.4em;font:800 1.2rem var(--disp);color:#e3e6da;text-shadow:0 2px 2px #000;
  background:var(--grain),var(--mottle),radial-gradient(ellipse at 50% 15%,#3a7a4a,#1f4a2d 60%,#143220);border-color:#b3b4aa #55564f #3a3b36 #8f9088}
